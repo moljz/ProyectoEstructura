@@ -1,6 +1,8 @@
 
 package Proyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Maria Gabriela
@@ -99,6 +101,26 @@ public class Vehiculo {
         this.cilindrada = cilindrada;
     }
     
+     public void pedir_dato(){
+         
+        this.año = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
+                + "año del vehículo: "));
+        this.marca= JOptionPane.showInputDialog("Digite la marca del vehículo: ");
+        this.modelo=JOptionPane.showInputDialog("Digite el modelo del vehículo: ");
+        this.numPlaca= JOptionPane.showInputDialog("Digite su nombre: ");
+        this.NumPasajeros=Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                 + " su número de vuelo "));
+        this.combustible= JOptionPane.showInputDialog("Digite su nombre: ");
+        this.precioDia=Double.parseDouble(JOptionPane.showInputDialog("Digite"
+                 + " su número de vuelo "));
+        this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                 + " su edad: "));
+        
+}  
+     
+  
+    
+  
     
     
 }
