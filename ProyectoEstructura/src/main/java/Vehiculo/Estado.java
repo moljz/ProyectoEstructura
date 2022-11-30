@@ -1,5 +1,5 @@
 
-package Proyecto;
+package Vehiculo;
 
 /**
  *

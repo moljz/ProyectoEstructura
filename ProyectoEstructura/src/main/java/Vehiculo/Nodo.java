@@ -1,5 +1,5 @@
 
-package Proyecto;
+package Vehiculo;
 
 /**
  *
@@ -31,6 +31,6 @@ public class Nodo {
 
    @Override
     public String toString() {
-        return "El valor es: " + String.valueOf(dato);
+        return "El valor es: " + String.valueOf(dato.getNumPlaca());
     }
 }
