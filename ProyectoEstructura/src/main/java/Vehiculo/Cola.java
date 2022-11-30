@@ -4,6 +4,9 @@ package Vehiculo;
  *
  * @author Maria Gabriela
  */
+
+/* Revisar si realmente es una cola lo idóneo, de ser así comentarla completa y 
+comprender realmente el funcionamiento */
 public class Cola {
 
     //Estos dos nodos comienzan como nulos
@@ -24,7 +27,6 @@ public class Cola {
             ultimo = d;
         }
         largo++;
-
     }
 
     @Override

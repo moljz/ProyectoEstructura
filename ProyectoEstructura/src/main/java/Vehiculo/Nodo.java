@@ -29,6 +29,8 @@ public class Nodo {
         this.atras = atras;
     }
 
+    
+    /* Editar el toString para mostrar toda la información del vehículo*/
    @Override
     public String toString() {
         return "El valor es: " + String.valueOf(dato.getNumPlaca());
