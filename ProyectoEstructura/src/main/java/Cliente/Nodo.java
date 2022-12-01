@@ -8,15 +8,34 @@ package Cliente;
  *
  * @author jafet
  */
-class Nodo {
+public class Nodo {
+    
+   private Cliente dato;
+   private Nodo next;
 
-    void setAtras(Nodo d) {
-        throw new UnsupportedOperationException("Not supported yet.");
-        // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Nodo(Cliente dato) {
+        this.dato = dato;
     }
 
-    Nodo getAtras() {
+    public Cliente getDato() {
+        return dato;
+    }
+
+    public void setDato(Cliente dato) {
+        this.dato = dato;
+    }
+
+    public Nodo getNext() {
+        return next;
+    }
+
+    public void setNext(Nodo next) {
+        this.next = next;
+    }
+
+    void setNext(Object cabeza) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+   
+
 }
