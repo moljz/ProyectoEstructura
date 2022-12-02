@@ -26,7 +26,7 @@ public class Nodo {
    
      @Override
     public String toString() {
-        return "Nodo{" + "dato=" + dato + '}';
+        return "Nodo{" + "Placa = " + dato.getNumPlaca() + '}';
     }
     
     /* Editar el toString para mostrar toda la información del vehículo*/
