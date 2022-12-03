@@ -10,13 +10,11 @@ package Cliente;
  */
 public class Lista {
     
-    Nodo Cabeza;
-    private Object cabeza;
+    private Nodo cabeza;
     
     public void inserta(Cliente c){
         if (cabeza == null){ //Si la lista está vacía solo asignamos nuevo nodo 
             cabeza = new Nodo (c);
-        }else if(c.getCedula()<cabeza.getDato().getCedula()){
             Nodo aux = new Nodo(c);
             aux.setNext(cabeza);
             cabeza=aux;
@@ -24,16 +22,15 @@ public class Lista {
             cabeza.setNext(new Nodo(c));
             
         }
-        Nodo aux = cabeza;
-        while (aux.getNext()!=null && aux.getNext().getDato().getCedula()<c.getCedula()){
-            aux= aux.getNext();}
+        Nodo aux = (Nodo) cabeza;
+        
         Nodo temp = new Nodo (c);//Creo temp para crear el nodo p 
         temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
         aux.setNext(temp); //Enlazo el siguiente de aux al temp 
         }
         @Override
     public String toString() {
-        Nodo aux = cabeza; 
+        Nodo aux = (Nodo) cabeza; 
         String s ="Lista: ";
         while (aux !=null) {
             s+=aux+", ";
@@ -46,14 +43,14 @@ public class Lista {
             //Vehiculo tiene ese número de placa 
             if (cabeza != null){
                 //Si hay algo en la lista busca
-                Nodo aux = cabeza; 
+                Nodo aux = (Nodo) cabeza; 
                 //Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
               while (aux != null && aux.getDato().getCedula()!= Cedula){
                   aux = aux.getNext(); //avanzo en la lista 
               }
-              esta = (aux != null && aux.getDato().getCedula()== cedula);
+              esta = (aux != null && aux.getDato().getCedula()== Cedula);
             }
             return esta; 
     }
@@ -62,7 +59,7 @@ public class Lista {
         //el número de Placa 
         if (cabeza != null){
             //Si hay algo en la lista buscamos
-            Nodo aux = cabeza; //Utilizo aux como indice 
+            Nodo aux = (Nodo) cabeza; //Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
                  while (aux != null && aux.getDato().getCedula()== c.getCedula()){
@@ -72,21 +69,23 @@ public class Lista {
                      //Cambia la marca 
                      aux.getDato().setCorreo(c.getCorreo());
                  }
+        
+                 }
         }
-        public void elimina (String correo){
+    public void elimina (String cedula){
         //Buscamos el vehículo por num plac, si lo encuentra lo elimina
         if (cabeza != null){//Si hay algo en la lista buscamos 
-            if (cabeza.getDato().getCorreo()== correo){
+            if (cabeza.getDato().getCorreo()== cedula){
                 cabeza = cabeza.getNext();
             }else {
-                Nodo aux = cabeza;//Utilizo aux como indice 
+                Nodo aux = (Nodo) cabeza;//Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
-               while (aux.getNext() != null && aux.getNext().getDato().getCorreo()!= correo){
+               while (aux.getNext() != null && aux.getNext().getDato().getCorreo()!= cedula){
                    aux = aux.getNext();
                }//Avanzo en la lista
                //Si es el de adelante lo borro
-               if (aux.getNext() != null && aux.getNext().getDato().getCorreo()== correo){
+               if (aux.getNext() != null && aux.getNext().getDato().getCorreo()== cedula){
                    aux.setNext(aux.getNext().getNext());//Cambio las referencias 
                }
             }

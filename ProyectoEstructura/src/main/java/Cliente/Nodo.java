@@ -12,6 +12,16 @@ public class Nodo {
     
    private Cliente dato;
    private Nodo next;
+   private Nodo cabeza;
+
+    public Nodo getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(Nodo cabeza) {
+        this.cabeza = cabeza;
+    }
+   
 
     public Nodo(Cliente dato) {
         this.dato = dato;

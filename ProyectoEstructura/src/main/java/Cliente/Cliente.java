@@ -12,13 +12,13 @@ import javax.swing.JOptionPane;
  */
 public class Cliente {
     
-    private int cedula;
+    private String cedula;
     private String nomCompleto;
     private int fechaNac;
     private String correo;
     private String categoria;
 
-    public Cliente(int cedula, String nomCompleto, int fechaNac, String correo,
+    public Cliente(String cedula, String nomCompleto, int fechaNac, String correo,
             String categoria) {
         this.cedula = cedula;
         this.nomCompleto = nomCompleto;
@@ -27,13 +27,15 @@ public class Cliente {
         this.categoria = categoria;
     }
 
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
+
+
 
     public String getNomCompleto() {
         return nomCompleto;
@@ -70,8 +72,8 @@ public class Cliente {
     
     public void pedir_dato() {
 
-        this.cedula = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
-                + "numero de cedula: "));
+        this.cedula = JOptionPane.showInputDialog("Digite la cedula");
+              
         this.nomCompleto = JOptionPane.showInputDialog("Digite el nombre"
                 + " completo: ");
         this.fechaNac = Integer.parseInt(JOptionPane.showInputDialog("Digite la"
