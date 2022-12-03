@@ -20,7 +20,11 @@ public class Main {
         
         //laLista.inserta();
         System.out.print(laLista);
-     
+        System.out.println(laLista.existe("971231"));
+        laLista.modifica( new Vehiculo(1800, "Subaru", "X312", "9DASD2", "Amarillo", 5, "Diesel", 5000, 1200, "Ventana eléctrica"));
+        System.out.println(laLista);
+        laLista.elimina("971231");
+        System.out.println(laLista);
     
 }
 }

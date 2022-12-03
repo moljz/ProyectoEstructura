@@ -7,11 +7,11 @@ import javax.swing.JOptionPane;
  * @author Maria Gabriela
  */
 public class Vehiculo {
-    
+
     //PENDIENTE cambiar extras, modificar ToStrings, añadir comentarios, consul
     //tar método Modifica de la lista 
-
     //Atributos 
+    
     private int ano;
     private String marca;
     private String modelo;
@@ -22,11 +22,12 @@ public class Vehiculo {
     private Estado estado;
     private double precioDia;
     private int cilindrada;
-    private String extras; //Cambiar este aributo a una estructura de datos
+    private String extras; //Molina: Cambiar este aributo a una estructura de 
+    //datos ya que se deben almacenar varios
 
     //Constructor 
-    public Vehiculo(int ano, String marca, String modelo, String numPlaca, 
-            String color, int NumPasajeros, String combustible, 
+    public Vehiculo(int ano, String marca, String modelo, String numPlaca,
+            String color, int NumPasajeros, String combustible,
             double precioDia, int cilindrada, String extras) {
         this.ano = ano;
         this.marca = marca;
@@ -39,12 +40,10 @@ public class Vehiculo {
         this.cilindrada = cilindrada;
         this.extras = extras;
     }
-    
-     //Constructor default 
 
+    //Constructor default 
     public Vehiculo() {
     }
-    
 
     //Get and Sets 
     public String getColor() {
