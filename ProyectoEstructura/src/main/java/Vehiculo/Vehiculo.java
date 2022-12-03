@@ -1,5 +1,6 @@
 package Vehiculo;
 
+import Extras.Cola;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,13 +23,13 @@ public class Vehiculo {
     private Estado estado;
     private double precioDia;
     private int cilindrada;
-    private String extras; //Molina: Cambiar este aributo a una estructura de 
+    private Cola extras; //Molina: Cambiar este aributo a una estructura de 
     //datos ya que se deben almacenar varios
 
     //Constructor 
     public Vehiculo(int ano, String marca, String modelo, String numPlaca,
             String color, int NumPasajeros, String combustible,
-            double precioDia, int cilindrada, String extras) {
+            double precioDia, int cilindrada, Cola extras) {
         this.ano = ano;
         this.marca = marca;
         this.modelo = modelo;
@@ -118,11 +119,11 @@ public class Vehiculo {
         this.cilindrada = cilindrada;
     }
 
-    public String getExtras() {
+    public Cola getExtras() {
         return extras;
     }
 
-    public void setExtras(String extras) {
+    public void setExtras(Cola extras) {
         this.extras = extras;
     }
 

@@ -32,9 +32,10 @@ public class Nodo {
     }
 
     //Molina: Falta completar el toString para mostrar la información del vehículo
+    //De acuerdo a todos los atributos del vehículo
     @Override
     public String toString() {
-        return "Nodo{" + "Placa = " + dato.getNumPlaca() + "Marca = " + dato.getMarca() + '}';
+        return "Placa: " + dato.getNumPlaca() + " Las extras son: " + dato.getExtras() + "\n";
     }
 
 }

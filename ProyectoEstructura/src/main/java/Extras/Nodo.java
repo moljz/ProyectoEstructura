@@ -6,14 +6,14 @@ package Extras;
  * @author Maria Gabriela
  */
 public class Nodo {
-     private int dato;
+    private String dato;
     private Nodo atras;
 
-    public int getDato() {
+    public String getDato() {
         return dato;
     }
 
-    public void setDato(int dato) {
+    public void setDato(String dato) {
         this.dato = dato;
     }
 
@@ -25,13 +25,13 @@ public class Nodo {
         this.atras = atras;
     }
 
-    public Nodo(int dato) {
+    public Nodo(String dato) {
         this.dato = dato;
     }
 
     @Override
     public String toString() {
-        return "El valor es: " + String.valueOf(dato);
+        return "El valor es: " + dato;
     }
 
     

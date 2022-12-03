@@ -29,16 +29,18 @@ public class Lista {
             //Caso:3 Si debo insertar a la derecha de la cabeza valido que no 
             //haya nada ahí 
             cabeza.setNext(new Nodo(v));
+        } else {
+            //Este método lo usamos para insertar al medio y al final de la lista 
+            Nodo aux = cabeza;
+            while (aux.getNext() != null && aux.getNext().getDato().getAno() < v.getAno()) {
+                aux = aux.getNext();
+            }
+            //ya ubicado se procede a realizar los enlaces (medio) 
+            Nodo temp = new Nodo(v);//Creo temp para crear el nodo p 
+            temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
+            aux.setNext(temp); //Enlazo el siguiente de aux al temp 
         }
-        //Este método lo usamos para insertar al medio y al final de la lista 
-        Nodo aux = cabeza;
-        while (aux.getNext() != null && aux.getNext().getDato().getAno() < v.getAno()) {
-            aux = aux.getNext();
-        }
-        //ya ubicado se procede a realizar los enlaces (medio) 
-        Nodo temp = new Nodo(v);//Creo temp para crear el nodo p 
-        temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
-        aux.setNext(temp); //Enlazo el siguiente de aux al temp 
+
     }
 
     //Molina: Funcional
@@ -78,12 +80,7 @@ public class Lista {
             if (aux != null && aux.getDato().getNumPlaca() == v.getNumPlaca()) {
                 //Cambia la marca 
                 aux.getDato().setMarca(v.getMarca());
-                if (aux != null && aux.getDato().getNumPlaca() == v.getNumPlaca()) {
-                    //Cambia la marca 
-                    aux.getDato().setAno(v.getAno());
-                    //Poner los demás atributos :) 
-
-                }
+                aux.getDato().setAno(v.getAno());
             }
         }
 

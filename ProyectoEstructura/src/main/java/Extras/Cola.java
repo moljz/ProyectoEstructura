@@ -11,17 +11,18 @@ public class Cola {
 
     public Cola() {
     }
-
-    public void encola(Nodo d) {
+    
+    public void encola(Nodo extra) {
         if (frente == null) {  // significa que la cola esta vacia
-            frente = d;
-            ultimo = d;
+            frente = extra;
+            ultimo = extra;
         } else {
-            ultimo.setAtras(d);
-            ultimo = d;
+            ultimo.setAtras(extra);
+            ultimo = extra;
         }
     }
 
+    //Molina: De momento no se usa
     public Nodo atiende() {
         Nodo aux = frente;
         if (frente != null) {
@@ -31,7 +32,8 @@ public class Cola {
         return aux;
     }
 
-    public boolean search(int reference) {
+    //Molina: De momento no se usa
+    public boolean search(String reference) {
         //Crea una copia de la pila para no modificar la pila original y 
         //eliminar nodos
         Nodo aux = frente;
