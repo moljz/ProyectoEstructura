@@ -38,7 +38,7 @@ public class Lista {
     public String toString() {
         Nodo aux = cabeza; 
         String s ="Lista: ";
-        while (aux !=null) {
+        while (aux != null) {
             s+=aux+", ";
             aux=aux.getNext();
         }
@@ -78,10 +78,16 @@ public class Lista {
                  if (aux != null && aux.getDato().getNumPlaca()== v.getNumPlaca()){
                      //Cambia la marca 
                      aux.getDato().setMarca(v.getMarca());
+                  if (aux != null && aux.getDato().getNumPlaca()== v.getNumPlaca()){
+                     //Cambia la marca 
+                     aux.getDato().setAno(v.getAno());
+                    //Poner los demás atributos :) 
+                     
                  }
         }
     }
-    
+        
+    }
     //Busca un vehículo por NumPlaca y lo elimina 
     public void elimina (String NumPlaca){
         //Buscamos el vehículo por num plac, si lo encuentra lo elimina
