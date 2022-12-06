@@ -7,6 +7,8 @@ package Vehiculo;
 //Molina: Consultar al profe si las estructuras están limitadas a las que indica 
 //el enunciado o si se puede usar cualquiera de las vistas en el curso ya que 
 //de ser limitado es necesario actualizar esta lista a circular
+//Gabriela:Como hablamos,el profe me puso en el msj que las vistas en clase 
+//entonces todo gucci :) 
 public class Lista {
 
     //Atributos 
@@ -15,7 +17,7 @@ public class Lista {
     //Molina: La lista inserta los elementos en el orden deseado; sin embargo,
     //duplica el primer elemento que se ingresa en la lista por lo que es necesario 
     //solventarlo para darlo por corregido
-    //Si la lista está vacía 
+    //Gabriela: Creo que ya habíamos solucionado esto de la lista verdad ?
     public void inserta(Vehiculo v) {
         if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
             cabeza = new Nodo(v);
@@ -64,6 +66,7 @@ public class Lista {
 
     //Molina: Ampliar el método para modificar todos los datos excepto la placa
     //Método para modificar datos excepto NumPlaca
+    //Todo gucci por acá ;)
     public void modifica(Vehiculo v) {
         //Busca si hay un vehículo con ese numPlaca y modifica sus datos excepto
         //el número de Placa 
@@ -81,6 +84,14 @@ public class Lista {
                 //Cambia la marca 
                 aux.getDato().setMarca(v.getMarca());
                 aux.getDato().setAno(v.getAno());
+                aux.getDato().setCilindrada(v.getCilindrada());
+                aux.getDato().setModelo(v.getModelo());
+                aux.getDato().setColor(v.getColor());
+                aux.getDato().setNumPasajeros(v.getNumPasajeros());
+                aux.getDato().setPrecioDia(v.getPrecioDia());
+                aux.getDato().setCombustible(v.getCombustible());
+                //Gabriela: No sé que procede con "estado" que no sé cómo hacer
+                //para ponerlo para modificar como es un enum 
             }
         }
 

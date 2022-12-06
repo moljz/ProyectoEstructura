@@ -7,7 +7,8 @@ package Vehiculo;
 public class Nodo {
 
     private Vehiculo dato; //donde se almacenará la info de la persona 
-    private Nodo next; //la referencia al siguiente obj de tipo Nodo que contiene una persona 
+    private Nodo next; //la referencia al siguiente obj de tipo Nodo que
+    //contiene una persona 
 
     //Constructor que solo recibe persona, no se incluye el next 
     public Nodo(Vehiculo dato) {
@@ -33,9 +34,18 @@ public class Nodo {
 
     //Molina: Falta completar el toString para mostrar la información del vehículo
     //De acuerdo a todos los atributos del vehículo
+    //Gabriela: Todo gucci por acá 
     @Override
     public String toString() {
-        return "Placa: " + dato.getNumPlaca() + " Las extras son: " + dato.getExtras() + "\n";
+        return "Año: " + dato.getAno()+"Marca: " + dato.getMarca()+
+                "Modelo: " + dato.getModelo() +"Número de placa: " + 
+                dato.getNumPlaca() +"Color: " + dato.getColor()
+                +"Número de pasajeros: " + dato.getNumPasajeros() +
+                "Tipo de combustible: " + dato.getCombustible() +"Estado: " + 
+                "Precio del día: " + dato.getPrecioDia()+"Cilindrada: " 
+                + dato.getCilindrada()+ " Las extras son: " + dato.getExtras() 
+                + "\n";
     }
-
+ 
+    
 }

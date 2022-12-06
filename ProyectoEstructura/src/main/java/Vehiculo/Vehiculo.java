@@ -8,9 +8,6 @@ import javax.swing.JOptionPane;
  * @author Maria Gabriela
  */
 public class Vehiculo {
-
-    //PENDIENTE cambiar extras, modificar ToStrings, añadir comentarios, consul
-    //tar método Modifica de la lista 
     //Atributos 
     
     private int ano;
@@ -131,8 +128,10 @@ public class Vehiculo {
 
         this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
                 + "año del vehículo: "));
-        this.marca = JOptionPane.showInputDialog("Digite la marca del vehículo: ");
-        this.modelo = JOptionPane.showInputDialog("Digite el modelo del vehículo: ");
+        this.marca = JOptionPane.showInputDialog("Digite la marca del "
+                + "vehículo: ");
+        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
+                + " vehículo: ");
         this.numPlaca = JOptionPane.showInputDialog("Digite su nombre: ");
         this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
                 + " su número de vuelo "));
