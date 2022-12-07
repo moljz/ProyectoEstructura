@@ -18,10 +18,11 @@ public class Cliente {
     private String correo;
     //Molina: Validar si vale la pena utilizar un enum para encapsular las 
     //categorías que ya se encuentran definidas
-    private String categoria;
+    //Jafet: Listo en enum 
+    private Categoria categoria;
 
     public Cliente(String cedula, String nomCompleto, int fechaNac, String correo,
-            String categoria) {
+            Categoria categoria) {
         this.cedula = cedula;
         this.nomCompleto = nomCompleto;
         this.fechaNac = fechaNac;
@@ -61,11 +62,11 @@ public class Cliente {
         this.correo = correo;
     }
 
-    public String getCategoria() {
+    public Categoria getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String categoria) {
+    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
 
@@ -78,7 +79,7 @@ public class Cliente {
         this.fechaNac = Integer.parseInt(JOptionPane.showInputDialog("Digite la"
                 + "fecha de nacimiento: "));
         this.correo = JOptionPane.showInputDialog("Digite su correo: ");
-        this.categoria = JOptionPane.showInputDialog("Digite su categoria: ");
+       //Arreglar este por ser tipo categoría  this.categoria = JOptionPane.showInputDialog("Digite su categoría de cliente");
 
     }
 

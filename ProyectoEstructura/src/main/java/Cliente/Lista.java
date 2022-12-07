@@ -1,5 +1,6 @@
 package Cliente;
 
+
 /**
  *
  * @author jafet
@@ -7,6 +8,8 @@ package Cliente;
 //Molina: Consultar al profe si las estructuras están limitadas a las que indica 
 //el enunciado o si se puede usar cualquiera de las vistas en el curso ya que 
 //de ser limitado es necesario actualizar esta lista a circular
+//Solicionado 
+//G; Aclarado 
 public class Lista {
 
     private Nodo cabeza;
@@ -15,6 +18,8 @@ public class Lista {
     //insertan 4 clientes (1, 2, 3, 4) el resultado del output es 
     //1, 4, 3, 2, 1, 1 generando dos copias adicionales del primer nodo y 
     //colocando los otros al revés
+    //G; Esto creo que es problema de la salida de los datos no en el método en 
+    //Sí pero podemos revisarlo corriendolo 
     
     public void inserta(Cliente c) {
         if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
@@ -52,26 +57,34 @@ public class Lista {
 
     //Molina: Se debe ampliar el método para que permita editar todos los datos 
     //excepto la cedula del usuario ya que actualmente solo cambia el correo
+    //g; CASI LISTO 
     public void modifica(Cliente c) {
         //Busca si hay un vehículo con ese numPlaca y modifica sus datos excepto
         //el número de Placa 
         if (cabeza != null) {
             //Si hay algo en la lista buscamos
-            Nodo aux = (Nodo) cabeza; //Utilizo aux como indice 
+            Nodo aux = cabeza; //Utilizo aux como indice 
             //Mientras no se acabe la lista y el elemento de la lista sea 
             //diferente del buscado
-            //Molina: Se ajusta el while de "aux != null && aux.getDato().getCedula() == c.getCedula()" 
-            //a "aux != null && aux.getDato().getCedula() != c.getCedula()" ya 
-            //que para avanzar la cédula debe ser distinta
-            while (aux != null && aux.getDato().getCedula() != c.getCedula()) {
+            //Molina: Se cambia el operador de "==" a "!=" ya que si son 
+            //iguales el método no ejecuta cambios
+            while (aux != null && aux.getDato().getCedula()!= c.getCedula()) {
                 aux = aux.getNext(); //avanzo en la lista 
             }//Si lo encuentra hago el cambio de datos
-            if (aux != null && aux.getDato().getCedula() == c.getCedula()) {
-                //Cambia la marca 
-                aux.getDato().setCorreo(c.getCorreo());
+            if (aux != null && aux.getDato().getCedula()== c.getCedula()) {
+                //G; Cambiar los datos del vehículo a cliente  
+                aux.getDato().setMarca(v.getMarca());
+                aux.getDato().setAno(v.getAno());
+                aux.getDato().setCilindrada(v.getCilindrada());
+                aux.getDato().setModelo(v.getModelo());
+                aux.getDato().setColor(v.getColor());
+                aux.getDato().setNumPasajeros(v.getNumPasajeros());
+                aux.getDato().setPrecioDia(v.getPrecioDia());
+                aux.getDato().setCombustible(v.getCombustible());
+                aux.getDato().setCategoria();// G; Consultar por este 
             }
-
         }
+
     }
 
     //Molina: Hacer el método más transparente al usuario, con una salida o algo
@@ -79,9 +92,6 @@ public class Lista {
     public void elimina(String cedula) {
         //Buscamos el vehículo por num plac, si lo encuentra lo elimina
         if (cabeza != null) {//Si hay algo en la lista buscamos 
-            //Molina: Se modifica el metodo de "cabeza.getDato().getCorreo() == cedula" 
-            //a "cabeza.getDato().getCedula() == cedula" ya que compara el 
-            //correo contra la cedula por lo que nunca lo va a encontrar
             if (cabeza.getDato().getCedula() == cedula) {
                 cabeza = cabeza.getNext();
             } else {
@@ -90,6 +100,8 @@ public class Lista {
                 //diferente del buscado
                 //Molina: Se ajusta los get de las condicionales ya que comparan
                 //el correo contra la cedula de manera que comparen cedulas
+                //G; Acá hay que meter una salida de datos que le diga al cliente que lo eliminó correctamente
+                //hay que correr el método para saber en cuál línea va esa salida 
                 while (aux.getNext() != null && aux.getNext().getDato().getCedula()!= cedula) {
                     aux = aux.getNext();
                 }//Avanzo en la lista
