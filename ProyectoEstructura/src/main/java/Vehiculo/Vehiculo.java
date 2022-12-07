@@ -25,7 +25,7 @@ public class Vehiculo {
 
     //Constructor 
     public Vehiculo(int ano, String marca, String modelo, String numPlaca,
-            String color, int NumPasajeros, String combustible,
+            String color, int NumPasajeros, String combustible, Estado estado,
             double precioDia, int cilindrada, Cola extras) {
         this.ano = ano;
         this.marca = marca;
@@ -34,6 +34,7 @@ public class Vehiculo {
         this.color = color;
         this.NumPasajeros = NumPasajeros;
         this.combustible = combustible;
+        this.estado = estado;
         this.precioDia = precioDia;
         this.cilindrada = cilindrada;
         this.extras = extras;
@@ -122,6 +123,14 @@ public class Vehiculo {
 
     public void setExtras(Cola extras) {
         this.extras = extras;
+    }
+    
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public void pedir_dato() {

@@ -90,6 +90,7 @@ public class Lista {
                 aux.getDato().setNumPasajeros(v.getNumPasajeros());
                 aux.getDato().setPrecioDia(v.getPrecioDia());
                 aux.getDato().setCombustible(v.getCombustible());
+                aux.getDato().setEstado(v.getEstado());
                 //Gabriela: No sé que procede con "estado" que no sé cómo hacer
                 //para ponerlo para modificar como es un enum 
             }

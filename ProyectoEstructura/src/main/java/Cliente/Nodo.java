@@ -8,6 +8,7 @@ public class Nodo {
 
     private Cliente dato;
     private Nodo next;
+
     //Molina: El nodo cabeza no debería ser necesario ya que esto se define 
     //dentro de la lista particular.
     //G; Listo

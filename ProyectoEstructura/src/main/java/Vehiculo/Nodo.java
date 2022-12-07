@@ -37,14 +37,14 @@ public class Nodo {
     //Gabriela: Todo gucci por acá 
     @Override
     public String toString() {
-        return "Año: " + dato.getAno()+"Marca: " + dato.getMarca()+
-                "Modelo: " + dato.getModelo() +"Número de placa: " + 
-                dato.getNumPlaca() +"Color: " + dato.getColor()
-                +"Número de pasajeros: " + dato.getNumPasajeros() +
-                "Tipo de combustible: " + dato.getCombustible() +"Estado: " + 
-                "Precio del día: " + dato.getPrecioDia()+"Cilindrada: " 
-                + dato.getCilindrada()+ " Las extras son: " + dato.getExtras() 
-                + "\n";
+        return "Año: " + dato.getAno()+"\nMarca: " + dato.getMarca()+
+                "\nModelo: " + dato.getModelo() +"\nNúmero de placa: " + 
+                dato.getNumPlaca() +"\nColor: " + dato.getColor()
+                +"\nNúmero de pasajeros: " + dato.getNumPasajeros() +
+                "\nTipo de combustible: " + dato.getCombustible() +"\nEstado: " 
+                + dato.getEstado() + "\nPrecio del día: " + dato.getPrecioDia()
+                + "\nCilindrada: " + dato.getCilindrada() + "\nLas extras son: "
+                + dato.getExtras() + "\n";
     }
  
     
