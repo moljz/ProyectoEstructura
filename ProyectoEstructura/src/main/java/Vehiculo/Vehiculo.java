@@ -1,5 +1,6 @@
 package Vehiculo;
 
+import Extras.Cola;
 import javax.swing.JOptionPane;
 
 /**
@@ -7,11 +8,8 @@ import javax.swing.JOptionPane;
  * @author Maria Gabriela
  */
 public class Vehiculo {
-    
-    //PENDIENTE cambiar extras, modificar ToStrings, añadir comentarios, consul
-    //tar método Modifica de la lista 
-
     //Atributos 
+    
     private int ano;
     private String marca;
     private String modelo;
@@ -22,12 +20,13 @@ public class Vehiculo {
     private Estado estado;
     private double precioDia;
     private int cilindrada;
-    private String extras; //Cambiar este aributo a una estructura de datos
+    private Cola extras; //Molina: Cambiar este aributo a una estructura de 
+    //datos ya que se deben almacenar varios
 
     //Constructor 
-    public Vehiculo(int ano, String marca, String modelo, String numPlaca, 
-            String color, int NumPasajeros, String combustible, 
-            double precioDia, int cilindrada, String extras) {
+    public Vehiculo(int ano, String marca, String modelo, String numPlaca,
+            String color, int NumPasajeros, String combustible, Estado estado,
+            double precioDia, int cilindrada, Cola extras) {
         this.ano = ano;
         this.marca = marca;
         this.modelo = modelo;
@@ -35,16 +34,15 @@ public class Vehiculo {
         this.color = color;
         this.NumPasajeros = NumPasajeros;
         this.combustible = combustible;
+        this.estado = estado;
         this.precioDia = precioDia;
         this.cilindrada = cilindrada;
         this.extras = extras;
     }
-    
-     //Constructor default 
 
+    //Constructor default 
     public Vehiculo() {
     }
-    
 
     //Get and Sets 
     public String getColor() {
@@ -119,20 +117,30 @@ public class Vehiculo {
         this.cilindrada = cilindrada;
     }
 
-    public String getExtras() {
+    public Cola getExtras() {
         return extras;
     }
 
-    public void setExtras(String extras) {
+    public void setExtras(Cola extras) {
         this.extras = extras;
+    }
+    
+    public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
     }
 
     public void pedir_dato() {
 
         this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
                 + "año del vehículo: "));
-        this.marca = JOptionPane.showInputDialog("Digite la marca del vehículo: ");
-        this.modelo = JOptionPane.showInputDialog("Digite el modelo del vehículo: ");
+        this.marca = JOptionPane.showInputDialog("Digite la marca del "
+                + "vehículo: ");
+        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
+                + " vehículo: ");
         this.numPlaca = JOptionPane.showInputDialog("Digite su nombre: ");
         this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
                 + " su número de vuelo "));
