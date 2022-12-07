@@ -10,6 +10,7 @@ package Cliente;
 //de ser limitado es necesario actualizar esta lista a circular
 //Solicionado 
 //G; Aclarado 
+//j: el profe dice cualquiera vista en clases 
 public class Lista {
 
     private Nodo cabeza;
@@ -24,9 +25,7 @@ public class Lista {
     public void inserta(Cliente c) {
         if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
             cabeza = new Nodo(c);
-            Nodo aux = new Nodo(c);
-            aux.setNext(cabeza);
-            cabeza = aux;
+            //j creo que ya se corrigio
         } else if (cabeza.getNext() == null) {
             cabeza.setNext(new Nodo(c));
 
@@ -40,7 +39,7 @@ public class Lista {
     //Molina: Funcional
     public boolean existe(String Cedula) {
         boolean esta = false; //Busca en la lista y retorna true si un
-        //Vehiculo tiene ese número de placa 
+        
         if (cabeza != null) {
             //Si hay algo en la lista busca
             Nodo aux = (Nodo) cabeza;
@@ -57,10 +56,8 @@ public class Lista {
 
     //Molina: Se debe ampliar el método para que permita editar todos los datos 
     //excepto la cedula del usuario ya que actualmente solo cambia el correo
-    //g; CASI LISTO 
+    //j: me parece que ya o estoy mal?
     public void modifica(Cliente c) {
-        //Busca si hay un vehículo con ese numPlaca y modifica sus datos excepto
-        //el número de Placa 
         if (cabeza != null) {
             //Si hay algo en la lista buscamos
             Nodo aux = cabeza; //Utilizo aux como indice 
@@ -72,16 +69,11 @@ public class Lista {
                 aux = aux.getNext(); //avanzo en la lista 
             }//Si lo encuentra hago el cambio de datos
             if (aux != null && aux.getDato().getCedula()== c.getCedula()) {
-                //G; Cambiar los datos del vehículo a cliente  
-                aux.getDato().setMarca(v.getMarca());
-                aux.getDato().setAno(v.getAno());
-                aux.getDato().setCilindrada(v.getCilindrada());
-                aux.getDato().setModelo(v.getModelo());
-                aux.getDato().setColor(v.getColor());
-                aux.getDato().setNumPasajeros(v.getNumPasajeros());
-                aux.getDato().setPrecioDia(v.getPrecioDia());
-                aux.getDato().setCombustible(v.getCombustible());
-                aux.getDato().setCategoria();// G; Consultar por este 
+                aux.getDato().setCategoria(c.getCategoria());
+                aux.getDato().setCorreo(c.getCorreo());
+                aux.getDato().setFechaNac(c.getFechaNac());
+                aux.getDato().setNomCompleto(c.getNomCompleto());
+                aux.getDato().setCategoria(c.getCategoria()); 
             }
         }
 
@@ -90,7 +82,7 @@ public class Lista {
     //Molina: Hacer el método más transparente al usuario, con una salida o algo
     //que inidique que se eliminó el usuario o bien que no se encuentra
     public void elimina(String cedula) {
-        //Buscamos el vehículo por num plac, si lo encuentra lo elimina
+        
         if (cabeza != null) {//Si hay algo en la lista buscamos 
             if (cabeza.getDato().getCedula() == cedula) {
                 cabeza = cabeza.getNext();

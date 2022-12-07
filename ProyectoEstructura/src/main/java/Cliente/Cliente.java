@@ -14,14 +14,15 @@ public class Cliente {
     private String nomCompleto;
     //Molina: Es necesario determinar el formato a utilizar ya que al ser int se
     //limita cualquier carácter distinto a un número (Considerar mejor formulación)
-    private int fechaNac;
+//se cambio string para fecha
+    private String fechaNac;
     private String correo;
     //Molina: Validar si vale la pena utilizar un enum para encapsular las 
     //categorías que ya se encuentran definidas
     //Jafet: Listo en enum 
     private Categoria categoria;
 
-    public Cliente(String cedula, String nomCompleto, int fechaNac, String correo,
+    public Cliente(String cedula, String nomCompleto, String fechaNac, String correo,
             Categoria categoria) {
         this.cedula = cedula;
         this.nomCompleto = nomCompleto;
@@ -46,11 +47,11 @@ public class Cliente {
         this.nomCompleto = nomCompleto;
     }
 
-    public int getFechaNac() {
+    public String getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(int fechaNac) {
+    public void setFechaNac(String fechaNac) {
         this.fechaNac = fechaNac;
     }
 
@@ -76,11 +77,11 @@ public class Cliente {
 
         this.nomCompleto = JOptionPane.showInputDialog("Digite el nombre"
                 + " completo: ");
-        this.fechaNac = Integer.parseInt(JOptionPane.showInputDialog("Digite la"
-                + "fecha de nacimiento: "));
+        this.fechaNac = JOptionPane.showInputDialog("Digite la"
+                + "fecha de nacimiento: ");
         this.correo = JOptionPane.showInputDialog("Digite su correo: ");
        //Arreglar este por ser tipo categoría  this.categoria = JOptionPane.showInputDialog("Digite su categoría de cliente");
-
+        
     }
 
 }

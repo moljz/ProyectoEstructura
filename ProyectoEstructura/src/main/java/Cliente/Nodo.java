@@ -11,7 +11,7 @@ public class Nodo {
 
     //Molina: El nodo cabeza no debería ser necesario ya que esto se define 
     //dentro de la lista particular.
-    //G; Listo
+    //j: Listo
 
     public Nodo(Cliente dato) {
         this.dato = dato;
