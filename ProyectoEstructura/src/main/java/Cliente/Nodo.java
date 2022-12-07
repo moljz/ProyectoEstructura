@@ -8,17 +8,7 @@ public class Nodo {
 
     private Cliente dato;
     private Nodo next;
-    //Molina: El nodo cabeza no debería ser necesario ya que esto se define 
-    //dentro de la lista particular.
-    private Nodo cabeza;
 
-    public Nodo getCabeza() {
-        return cabeza;
-    }
-
-    public void setCabeza(Nodo cabeza) {
-        this.cabeza = cabeza;
-    }
 
     public Nodo(Cliente dato) {
         this.dato = dato;
