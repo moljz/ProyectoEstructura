@@ -10,6 +10,8 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        /* G;Esto va a dar error porque ahora categoría es un enum entonces hay que 
+        pasarle un obj de tipo enum creo */
         Cliente a = new Cliente("11111", "Jose Fernandez Herrera", 4, "asasd@hotmail.com", "Bronce");
         Cliente b = new Cliente("11111", "Luis Fernandez Herrera", 4, "asasd@hotmail.com", "Bronce");
         Cliente c = new Cliente("22222", "Francisco Fernandez Herrera", 4, "asasd@hotmail.com", "Bronce");

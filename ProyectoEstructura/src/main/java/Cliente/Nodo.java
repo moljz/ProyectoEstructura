@@ -8,17 +8,10 @@ public class Nodo {
 
     private Cliente dato;
     private Nodo next;
+
     //Molina: El nodo cabeza no debería ser necesario ya que esto se define 
     //dentro de la lista particular.
-    private Nodo cabeza;
-
-    public Nodo getCabeza() {
-        return cabeza;
-    }
-
-    public void setCabeza(Nodo cabeza) {
-        this.cabeza = cabeza;
-    }
+    //j: Listo
 
     public Nodo(Cliente dato) {
         this.dato = dato;
@@ -40,11 +33,7 @@ public class Nodo {
         this.next = next;
     }
 
-    //Molina: Revisar si este método es necesario
-    void setNext(Object cabeza) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     @Override
     public String toString() {
         return "Los datos del cliente son: Nombre completo: " 
