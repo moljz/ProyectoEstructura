@@ -35,6 +35,7 @@ public class Nodo {
     //Molina: Falta completar el toString para mostrar la información del vehículo
     //De acuerdo a todos los atributos del vehículo
     //Gabriela: Todo gucci por acá 
+    //Molina2: No gucci, acomodar las extras separadas por coma en una sola línea
     @Override
     public String toString() {
         return "Año: " + dato.getAno()+"\nMarca: " + dato.getMarca()+

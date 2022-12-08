@@ -120,6 +120,31 @@ public class Lista {
 
         }
     }
+    
+    public Vehiculo extrae(String NumPlaca) {
+        Vehiculo v = null;
+        //si una persona tiene el id, lo extrae (eliminando y retornando)
+        if (cabeza != null) { //Si hay algo en la lista buscaré
+            if (cabeza.getDato().getNumPlaca()== NumPlaca) {
+                cabeza = cabeza.getNext();
+            } else {
+                Nodo aux = cabeza; //utilizo aux como indice
+                //Mientras no se acabe la lista y el elemento
+                //de la lista sea menor que el buscado
+                while (aux.getNext() != null && aux.getNext().getDato().getNumPlaca()
+                        != NumPlaca) {
+                    aux = aux.getNext();
+                    //avanzo en la lista
+                }
+                // Si es el de adelante... quardo la persona y lo borro
+                if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca()== NumPlaca) {
+                    v = aux.getNext().getDato();
+                    aux.setNext(aux.getNext().getNext());//cambio las referencias
+                }
+            }
+        }
+        return v;
+    }
 
     @Override
     public String toString() {

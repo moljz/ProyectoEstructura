@@ -20,13 +20,14 @@ public class Vehiculo {
     private Estado estado;
     private double precioDia;
     private int cilindrada;
+    private String cadenaExtras; //Recibe las extras ingresadas en texto plano
     private Cola extras; //Molina: Cambiar este aributo a una estructura de 
     //datos ya que se deben almacenar varios
 
     //Constructor 
     public Vehiculo(int ano, String marca, String modelo, String numPlaca,
             String color, int NumPasajeros, String combustible, Estado estado,
-            double precioDia, int cilindrada, Cola extras) {
+            double precioDia, int cilindrada, String cadenaExtras) {
         this.ano = ano;
         this.marca = marca;
         this.modelo = modelo;
@@ -37,7 +38,7 @@ public class Vehiculo {
         this.estado = estado;
         this.precioDia = precioDia;
         this.cilindrada = cilindrada;
-        this.extras = extras;
+        this.extras = encolarExtras(cadenaExtras);
     }
 
     //Constructor default 
@@ -132,7 +133,16 @@ public class Vehiculo {
     public void setEstado(Estado estado) {
         this.estado = estado;
     }
+    
+    public String getCadenaExtras() {
+        return cadenaExtras;
+    }
 
+    public void setCadenaExtras(String cadenaExtras) {
+        this.cadenaExtras = cadenaExtras;
+    }
+
+    //Molina: No gucci, revisar
     public void pedir_dato() {
 
         this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
@@ -149,7 +159,17 @@ public class Vehiculo {
                 + " su número de vuelo "));
         this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
                 + " su edad: "));
-
+    }
+    
+    public Cola encolarExtras(String extras){
+//        String extras = "Vidrio polarizado, Aire acondicionado, Luces LED";
+        Cola colaExtras = new Cola();
+        String[] nodos = new String[extras.length()];
+        for (int i = 0; i < nodos.length; i++) {
+            nodos = extras.split(",");
+            colaExtras.encola(new Extras.Nodo(nodos[i]));
+        }
+        return colaExtras;
     }
 
 }
