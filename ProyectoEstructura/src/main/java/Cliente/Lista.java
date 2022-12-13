@@ -1,45 +1,39 @@
 package Cliente;
 
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author jafet
  */
-//Molina: Consultar al profe si las estructuras están limitadas a las que indica 
-//el enunciado o si se puede usar cualquiera de las vistas en el curso ya que 
-//de ser limitado es necesario actualizar esta lista a circular
-//Solicionado 
-//G; Aclarado 
-//j: el profe dice cualquiera vista en clases 
 public class Lista {
 
     private Nodo cabeza;
 
-    //Molina: Hay que revisar el funcionamiento de este método ya que si se 
-    //insertan 4 clientes (1, 2, 3, 4) el resultado del output es 
-    //1, 4, 3, 2, 1, 1 generando dos copias adicionales del primer nodo y 
-    //colocando los otros al revés
-    //G; Esto creo que es problema de la salida de los datos no en el método en 
-    //Sí pero podemos revisarlo corriendolo 
-    
     public void inserta(Cliente c) {
-        if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
-            cabeza = new Nodo(c);
-            //j creo que ya se corrigio
-        } else if (cabeza.getNext() == null) {
-            cabeza.setNext(new Nodo(c));
+        if (existe(c.getCedula())) {
+            JOptionPane.showMessageDialog(null, "la cedula agregada ya existe");
 
+        } else {
+            if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
+                cabeza = new Nodo(c);
+            } else if (cabeza.getNext() == null) {
+                cabeza.setNext(new Nodo(c));
+
+            } else {
+                Nodo aux = (Nodo) cabeza;
+                Nodo temp = new Nodo(c);//Creo temp para crear el nodo p 
+                temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
+                aux.setNext(temp); //Enlazo el siguiente de aux al temp 
+            }
         }
-        Nodo aux = (Nodo) cabeza;
-        Nodo temp = new Nodo(c);//Creo temp para crear el nodo p 
-        temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
-        aux.setNext(temp); //Enlazo el siguiente de aux al temp 
+
     }
 
     //Molina: Funcional
     public boolean existe(String Cedula) {
         boolean esta = false; //Busca en la lista y retorna true si un
-        
+
         if (cabeza != null) {
             //Si hay algo en la lista busca
             Nodo aux = (Nodo) cabeza;
@@ -54,53 +48,45 @@ public class Lista {
         return esta;
     }
 
-    //Molina: Se debe ampliar el método para que permita editar todos los datos 
-    //excepto la cedula del usuario ya que actualmente solo cambia el correo
-    //j: me parece que ya o estoy mal?
     public void modifica(Cliente c) {
         if (cabeza != null) {
             //Si hay algo en la lista buscamos
             Nodo aux = cabeza; //Utilizo aux como indice 
             //Mientras no se acabe la lista y el elemento de la lista sea 
             //diferente del buscado
-            //Molina: Se cambia el operador de "==" a "!=" ya que si son 
-            //iguales el método no ejecuta cambios
-            while (aux != null && aux.getDato().getCedula()!= c.getCedula()) {
+            while (aux != null && aux.getDato().getCedula() != c.getCedula()) {
                 aux = aux.getNext(); //avanzo en la lista 
             }//Si lo encuentra hago el cambio de datos
-            if (aux != null && aux.getDato().getCedula()== c.getCedula()) {
+            if (aux != null && aux.getDato().getCedula() == c.getCedula()) {
                 aux.getDato().setCategoria(c.getCategoria());
                 aux.getDato().setCorreo(c.getCorreo());
                 aux.getDato().setFechaNac(c.getFechaNac());
                 aux.getDato().setNomCompleto(c.getNomCompleto());
-                aux.getDato().setCategoria(c.getCategoria()); 
+
             }
         }
 
     }
 
-    //Molina: Hacer el método más transparente al usuario, con una salida o algo
-    //que inidique que se eliminó el usuario o bien que no se encuentra
+
     public void elimina(String cedula) {
-        
+
         if (cabeza != null) {//Si hay algo en la lista buscamos 
             if (cabeza.getDato().getCedula() == cedula) {
                 cabeza = cabeza.getNext();
+                JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");
             } else {
                 Nodo aux = cabeza;//Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
-                //Molina: Se ajusta los get de las condicionales ya que comparan
-                //el correo contra la cedula de manera que comparen cedulas
-                //G; Acá hay que meter una salida de datos que le diga al cliente que lo eliminó correctamente
-                //hay que correr el método para saber en cuál línea va esa salida 
-                while (aux.getNext() != null && aux.getNext().getDato().getCedula()!= cedula) {
+                while (aux.getNext() != null && aux.getNext().getDato().getCedula() != cedula) {
                     aux = aux.getNext();
                 }//Avanzo en la lista
                 //Si es el de adelante lo borro
-                if (aux.getNext() != null && aux.getNext().getDato().getCedula()== cedula) {
+                if (aux.getNext() != null && aux.getNext().getDato().getCedula() == cedula) {
                     aux.setNext(aux.getNext().getNext());//Cambio las referencias 
                 }
+                JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");
             }
         }
     }

@@ -8,27 +8,25 @@ import javax.swing.JOptionPane;
  */
 public class Cliente {
 
-    //Molina: Este atributo debe tener validaciones para que sea única, no 
-    //pueden existir duplicados
+
     private String cedula;
     private String nomCompleto;
-    //Molina: Es necesario determinar el formato a utilizar ya que al ser int se
-    //limita cualquier carácter distinto a un número (Considerar mejor formulación)
-    //se cambio string para fecha
     private String fechaNac;
     private String correo;
-    //Molina: Validar si vale la pena utilizar un enum para encapsular las 
-    //categorías que ya se encuentran definidas
-    //Jafet: Listo en enum 
     private Categoria categoria;
+
 
     public Cliente(String cedula, String nomCompleto, String fechaNac, String correo,
             Categoria categoria) {
-        this.cedula = cedula;
-        this.nomCompleto = nomCompleto;
-        this.fechaNac = fechaNac;
-        this.correo = correo;
-        this.categoria = categoria;
+
+
+            this.cedula = cedula;
+            this.nomCompleto = nomCompleto;
+            this.fechaNac = fechaNac;
+            this.correo = correo;
+            this.categoria = categoria;
+        
+
     }
 
     public String getCedula() {
@@ -80,8 +78,9 @@ public class Cliente {
         this.fechaNac = JOptionPane.showInputDialog("Digite la"
                 + "fecha de nacimiento: ");
         this.correo = JOptionPane.showInputDialog("Digite su correo: ");
-       //Arreglar este por ser tipo categoría  this.categoria = JOptionPane.showInputDialog("Digite su categoría de cliente");
-        
+
+        this.categoria =Categoria.valueOf(JOptionPane.showInputDialog
+        ("Digite su categoría de cliente"));
     }
 
 }

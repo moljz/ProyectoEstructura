@@ -9,9 +9,6 @@ public class Nodo {
     private Cliente dato;
     private Nodo next;
 
-    //Molina: El nodo cabeza no debería ser necesario ya que esto se define 
-    //dentro de la lista particular.
-    //j: Listo
 
     public Nodo(Cliente dato) {
         this.dato = dato;
@@ -37,12 +34,9 @@ public class Nodo {
     @Override
     public String toString() {
         return "Los datos del cliente son: Nombre completo: " 
-                + dato.getNomCompleto() + ", cedula: " + dato.getCedula() 
+                + dato.getNomCompleto() + " cedula: " + dato.getCedula() 
                 + ", correo: " + dato.getCorreo() + ", fecha de nacimiento: " 
                 + dato.getFechaNac() + " y categoría: " + dato.getCategoria() 
                 + "\n"; 
     }
-    
-    
-
 }
