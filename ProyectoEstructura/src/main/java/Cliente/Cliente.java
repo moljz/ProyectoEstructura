@@ -14,7 +14,7 @@ public class Cliente {
     private String nomCompleto;
     //Molina: Es necesario determinar el formato a utilizar ya que al ser int se
     //limita cualquier carácter distinto a un número (Considerar mejor formulación)
-//se cambio string para fecha
+    //se cambio string para fecha
     private String fechaNac;
     private String correo;
     //Molina: Validar si vale la pena utilizar un enum para encapsular las 
