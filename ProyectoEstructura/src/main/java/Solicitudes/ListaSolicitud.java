@@ -66,7 +66,7 @@ public class ListaSolicitud {
     public void elimina(String Modelo) {
 
         if (cabeza != null) {//Si hay algo en la lista buscamos 
-            if (cabeza.getDato().getModelo()== Modelo) {
+            if (cabeza.getDato().getModelo() == Modelo) {
                 cabeza = cabeza.getNext();
                 JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");
             } else {
