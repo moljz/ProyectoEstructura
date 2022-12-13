@@ -7,7 +7,7 @@ package Solicitudes;
 public class Nodo {
 
     private Solicitud dato;
-    private Nodo atras;
+    private Nodo next;
 
     public Nodo(Solicitud dato) {
         this.dato = dato;
@@ -21,12 +21,12 @@ public class Nodo {
         this.dato = dato;
     }
 
-    public Nodo getAtras() {
-        return atras;
+    public Nodo getNext() {
+        return next;
     }
 
-    public void setAtras(Nodo atras) {
-        this.atras = atras;
+    public void setNext(Nodo next) {
+        this.next = next;
     }
 
     @Override

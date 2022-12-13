@@ -30,7 +30,7 @@ public class Solicitud {
         this.modelo = modelo;
         this.ano = ano;
         this.extras = extras;
-        this.estado = estado;
+        this.estado = Estado.Registrada;
     }
 
     public Estado getEstado() {

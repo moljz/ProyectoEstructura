@@ -22,7 +22,7 @@ public class Cola {
             ultimo = nuevoNodo;
         } else {
             //Toma el último nodo y le setea como nodo de atrás al nuevo nodo
-            ultimo.setAtras(nuevoNodo);
+            ultimo.setNext(nuevoNodo);
             //Define como último al nuevo nodo
             ultimo = nuevoNodo;
         }
@@ -34,10 +34,10 @@ public class Cola {
         Nodo aux = frente;
         if (frente != null) {
             //Esta línea pasa el nodo de frente al siguiente en la cola
-            frente = frente.getAtras();
+            frente = frente.getNext();
             //Quita la relación con el nodo de atrás ya que define al de atrás 
             //como nulo
-            aux.setAtras(null);
+            aux.setNext(null);
             largo--;
         }
         //Este método le devuelve el nodo que sale de la cola al usuario ya que 
@@ -54,7 +54,7 @@ public class Cola {
             //Cuando se sobreescribe el método ToString al pasar el objeto 
             //completo el automáticamente va a obtener el valor
             s+= aux + "\n";
-            aux = aux.getAtras();
+            aux = aux.getNext();
         }
         return s;
     }
