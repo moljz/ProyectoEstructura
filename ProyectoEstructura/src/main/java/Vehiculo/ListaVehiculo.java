@@ -73,6 +73,21 @@ public class ListaVehiculo {
         return esta;
     }
 
+    public void buscarPlaca(String NumPlaca) {
+        //Vehiculo tiene ese número de placa 
+        if (cabeza != null) {
+            //Si hay algo en la lista busca
+            NodoVehiculo aux = cabeza;
+            //Utilizo aux como indice 
+            //Mientras no se acabe la lista y el elemento de la lista sea 
+            //diferente del buscado
+            while (aux != null && aux.getDato().getNumPlaca() != NumPlaca) {
+                aux = aux.getNext(); //avanzo en la lista 
+            }
+            System.out.println(aux);
+        }
+    }
+    
     //Molina: Ampliar el método para modificar todos los datos excepto la placa
     //Método para modificar datos excepto NumPlaca
     //Todo gucci por acá ;)

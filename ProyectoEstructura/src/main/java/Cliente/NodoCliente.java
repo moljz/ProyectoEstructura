@@ -28,15 +28,19 @@ public class NodoCliente {
 
     public void setNext(NodoCliente next) {
         this.next = next;
+    } 
+    
+    public String imprimirDatos() {
+        return "Los datos del cliente indicado son:\nNombre completo: " 
+                + dato.getNomCompleto() + "\nCedula: " + dato.getCedula() 
+                + "\nCorreo: " + dato.getCorreo() + "\nFecha de nacimiento: " 
+                + dato.getFechaNac() + "\nCategoría: " + dato.getCategoria() 
+                + "\n"; 
     }
-
     
     @Override
     public String toString() {
-        return "Los datos del cliente son: Nombre completo: " 
-                + dato.getNomCompleto() + " cedula: " + dato.getCedula() 
-                + ", correo: " + dato.getCorreo() + ", fecha de nacimiento: " 
-                + dato.getFechaNac() + " y categoría: " + dato.getCategoria() 
-                + "\n"; 
+        return "Nombre completo: " 
+                + dato.getNomCompleto() + " cedula: " + dato.getCedula() + "\n"; 
     }
 }

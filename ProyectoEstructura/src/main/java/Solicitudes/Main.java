@@ -31,7 +31,8 @@ public class Main {
         listaCliente.inserta(d);
         listaCliente.inserta(e);
         
-//        //System.out.println(listaCliente);
+        System.out.println(listaCliente);
+        listaCliente.buscarPorCedula("55555");
 //        System.out.println(listaCliente.existe("3444"));
 //        listaCliente.modifica(e);
 //        System.out.println(listaCliente);
@@ -48,17 +49,20 @@ public class Main {
         listaVehiculo.inserta(new Vehiculo(2000, "Nissan", "X312", "971231", "Rojo", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", false));
         listaVehiculo.inserta(new Vehiculo(2010, "Nissan", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", false));
 
-        //laLista.inserta();
-        //System.out.print(listaVehiculo);
-        System.out.println(listaVehiculo.existe("971231"));
-        listaVehiculo.modifica(new Vehiculo(1800, "Subaru", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Alquilado, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED" , true));
+        //La impresión de la lista y buscarPlaca son parte de consultar vehículos
+        //FUNCIONA
+        System.out.print(listaVehiculo);
+        System.out.println("Vehiculo buscado por placa");
+        //ESTE MÉTODO FUNCIONA CORRECTAMENTE
+        listaVehiculo.buscarPlaca("971231");
+        listaVehiculo.modifica(new Vehiculo(1800, "Subaru", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Alquilado, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", true));
         //Esto se usa para reacomodar la lista una vez que se modifica un vehículo
-        //System.out.println(listaVehiculo);
-        //listaVehiculo.inserta(listaVehiculo.extrae("9DASD2"));
-        //System.out.println(listaVehiculo);
-        //System.out.println(listaVehiculo);
-        //listaVehiculo.elimina("971231");
-        //System.out.println(listaVehiculo);
+        listaVehiculo.inserta(listaVehiculo.extrae("9DASD2"));
+        //Funciona, si el elemento ha sido alquilado alguna vezs no se puede eliminar
+        listaVehiculo.elimina("9DASD2");
+        System.out.println(listaVehiculo);
+        
+        
         
         //Solicitud
         Solicitud PrimeraSolicitud = new Solicitud("20 de diciembre", 15, 2, "Nissan", "X312", 2000, "Vidrio eléctrico", EstadoSolicitud.Procesada, a);
@@ -74,6 +78,8 @@ public class Main {
         NodoSolicitud Cinco = new NodoSolicitud(QuintaSolicitud);
         
         ColaSolicitudes solicitudes = new ColaSolicitudes();
+//        PilaSolicitudes pilaSolicitudes = new PilaSolicitudes();
+//        pilaSolicitudes.push(Uno.getDato());
         solicitudes.encola(Uno);
         solicitudes.encola(Cinco);
         solicitudes.encola(Dos);
