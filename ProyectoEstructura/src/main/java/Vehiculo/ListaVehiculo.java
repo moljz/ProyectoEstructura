@@ -14,6 +14,13 @@ public class ListaVehiculo {
     //Atributos 
     private NodoVehiculo cabeza;
 
+    public NodoVehiculo getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(NodoVehiculo cabeza) {
+        this.cabeza = cabeza;
+    }
     //Molina: La lista inserta los elementos en el orden deseado; sin embargo,
     //duplica el primer elemento que se ingresa en la lista por lo que es necesario 
     //solventarlo para darlo por corregido
@@ -91,6 +98,7 @@ public class ListaVehiculo {
                 aux.getDato().setPrecioDia(v.getPrecioDia());
                 aux.getDato().setCombustible(v.getCombustible());
                 aux.getDato().setEstado(v.getEstado());
+                aux.getDato().setAlquilado(v.isAlquilado());
                 //Gabriela: No sé que procede con "estado" que no sé cómo hacer
                 //para ponerlo para modificar como es un enum 
             }
@@ -151,18 +159,10 @@ public class ListaVehiculo {
         NodoVehiculo aux = cabeza;
         String s = "Lista: ";
         while (aux != null) {
-            s += aux + ", ";
+            s += aux + "\n ";
             aux = aux.getNext();
         }
         return s;
-    }
-
-    public NodoVehiculo getCabeza() {
-        return cabeza;
-    }
-
-    public void setCabeza(NodoVehiculo cabeza) {
-        this.cabeza = cabeza;
     }
 
 }

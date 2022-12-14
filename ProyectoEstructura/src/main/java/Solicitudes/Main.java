@@ -44,28 +44,28 @@ public class Main {
         //Vehiculo
         ListaVehiculo listaVehiculo = new ListaVehiculo();
 
-        listaVehiculo.inserta(new Vehiculo(1990, "Nissan", "X312", "98A021", "Azul", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED"));
-        listaVehiculo.inserta(new Vehiculo(2000, "Nissan", "X312", "971231", "Rojo", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED"));
-        listaVehiculo.inserta(new Vehiculo(2010, "Nissan", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED"));
+        listaVehiculo.inserta(new Vehiculo(1990, "Nissan", "X312", "98A021", "Azul", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", false));
+        listaVehiculo.inserta(new Vehiculo(2000, "Nissan", "X312", "971231", "Rojo", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", false));
+        listaVehiculo.inserta(new Vehiculo(2010, "Nissan", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Disponible, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", false));
 
         //laLista.inserta();
-        System.out.print(listaVehiculo);
+        //System.out.print(listaVehiculo);
         System.out.println(listaVehiculo.existe("971231"));
-        listaVehiculo.modifica(new Vehiculo(1800, "Subaru", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Alquilado, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED"));
+        listaVehiculo.modifica(new Vehiculo(1800, "Subaru", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Alquilado, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED" , true));
         //Esto se usa para reacomodar la lista una vez que se modifica un vehículo
-        System.out.println(listaVehiculo);
-        listaVehiculo.inserta(listaVehiculo.extrae("9DASD2"));
+        //System.out.println(listaVehiculo);
+        //listaVehiculo.inserta(listaVehiculo.extrae("9DASD2"));
         //System.out.println(listaVehiculo);
         //System.out.println(listaVehiculo);
-        listaVehiculo.elimina("971231");
-        System.out.println(listaVehiculo);
+        //listaVehiculo.elimina("971231");
+        //System.out.println(listaVehiculo);
         
         //Solicitud
-        Solicitud PrimeraSolicitud = new Solicitud("20 de diciembre", 15, 2, "Nissan", "X312", 2000, "Vidrio eléctrico", EstadoSolicitud.Registrada, a);
-        Solicitud SegundaSolicitud = new Solicitud("21 de diciembre", 15, 2, "Nissan", "X312", 1990, "Vidrio eléctrico", EstadoSolicitud.Registrada, b);
+        Solicitud PrimeraSolicitud = new Solicitud("20 de diciembre", 15, 2, "Nissan", "X312", 2000, "Vidrio eléctrico", EstadoSolicitud.Procesada, a);
+        Solicitud SegundaSolicitud = new Solicitud("21 de diciembre", 15, 2, "Nissan", "X312", 1990, "Vidrio eléctrico", EstadoSolicitud.Procesada, b);
         Solicitud TerceraSolicitud = new Solicitud("22 de diciembre", 15, 2, "Nissan", "X450", 2010, "Vidrio eléctrico", EstadoSolicitud.Registrada, c);
-        Solicitud CuartaSolicitud = new Solicitud("23 de diciembre", 15, 2, "Nissan", "P330", 2020, "Vidrio eléctrico", EstadoSolicitud.Registrada, d);
-        Solicitud QuintaSolicitud = new Solicitud("23 de diciembre", 15, 2, "Nissan", "P330", 2020, "Vidrio eléctrico", EstadoSolicitud.Registrada, e);
+        Solicitud CuartaSolicitud = new Solicitud("23 de diciembre", 15, 2, "Nissan", "P330", 2020, "Vidrio eléctrico", EstadoSolicitud.Procesada, d);
+        Solicitud QuintaSolicitud = new Solicitud("23 de diciembre", 15, 2, "Nissan", "P330", 2020, "Vidrio eléctrico", EstadoSolicitud.Procesada, e);
         
         NodoSolicitud Uno = new NodoSolicitud(PrimeraSolicitud);
         NodoSolicitud Dos = new NodoSolicitud(SegundaSolicitud);
@@ -73,16 +73,23 @@ public class Main {
         NodoSolicitud Cuatro = new NodoSolicitud(CuartaSolicitud);
         NodoSolicitud Cinco = new NodoSolicitud(QuintaSolicitud);
         
-        Cola laCola = new Cola();
-        laCola.encola(Uno);
-        laCola.encola(Cinco);
-        laCola.encola(Dos);
-        laCola.encola(Tres);
-        laCola.encola(Cuatro);
+        ColaSolicitudes solicitudes = new ColaSolicitudes();
+        solicitudes.encola(Uno);
+        solicitudes.encola(Cinco);
+        solicitudes.encola(Dos);
+        solicitudes.encola(Tres);
+        solicitudes.encola(Cuatro);
         
-        laCola.atiende();
+        ColaSolicitudes colaAtendida = new ColaSolicitudes();
         
-        System.out.println(laCola);
+        System.out.println("Vehiculos asignados\n------------------");
+        solicitudes.atiende(listaVehiculo, colaAtendida);
+        
+        System.out.println("Esta es la cola de solicitudes\n------------------");
+        System.out.println(solicitudes);
+        
+        System.out.println("Lista global de vehículos\n------------------");
+        System.out.println(listaVehiculo);
     }
     
 }

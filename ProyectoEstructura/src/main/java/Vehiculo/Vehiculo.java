@@ -21,13 +21,14 @@ public class Vehiculo {
     private double precioDia;
     private int cilindrada;
     private String cadenaExtras; //Recibe las extras ingresadas en texto plano
-    private Cola extras; //Molina: Cambiar este aributo a una estructura de 
-    //datos ya que se deben almacenar varios
+    private Cola extras; 
+    //Este atributo define si ha sido o no alquilado el vehículo
+    private boolean alquilado = false;
 
     //Constructor 
     public Vehiculo(int ano, String marca, String modelo, String numPlaca,
             String color, int NumPasajeros, String combustible, EstadoVehiculo estado,
-            double precioDia, int cilindrada, String cadenaExtras) {
+            double precioDia, int cilindrada, String cadenaExtras, boolean alquilado) {
         this.ano = ano;
         this.marca = marca;
         this.modelo = modelo;
@@ -39,6 +40,7 @@ public class Vehiculo {
         this.precioDia = precioDia;
         this.cilindrada = cilindrada;
         this.extras = encolarExtras(cadenaExtras);
+        this.alquilado = alquilado;
     }
 
     //Constructor default 
@@ -141,8 +143,15 @@ public class Vehiculo {
     public void setCadenaExtras(String cadenaExtras) {
         this.cadenaExtras = cadenaExtras;
     }
+    
+    public boolean isAlquilado() {
+        return alquilado;
+    }
 
-    //Molina: No gucci, revisar
+    public void setAlquilado(boolean alquilado) {
+        this.alquilado = alquilado;
+    }
+
     public void pedir_dato() {
 
         this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
@@ -172,4 +181,5 @@ public class Vehiculo {
         return colaExtras;
     }
 
+    
 }

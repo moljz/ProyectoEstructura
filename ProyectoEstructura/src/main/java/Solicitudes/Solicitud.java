@@ -23,7 +23,7 @@ public class Solicitud {
     private EstadoSolicitud estado;
     //Mediante este atributo se define la asociación con el cliente
     private Cliente cliente;
-    private Vehiculo vehiculo;
+    private String placaVehiculo;
 
     public Solicitud() {
     }
@@ -116,12 +116,12 @@ public class Solicitud {
         this.cliente = cliente;
     }
     
-    public Vehiculo getVehiculo() {
-        return vehiculo;
+    public String getPlacaVehiculo() {
+        return placaVehiculo;
     }
 
-    public void setVehiculo(Vehiculo vehiculo) {
-        this.vehiculo = vehiculo;
+    public void setPlacaVehiculo(String placaVehiculo) {
+        this.placaVehiculo = placaVehiculo;
     }
     
     //Este método se encarga de revisar la cantidad de días que se solicita de 
