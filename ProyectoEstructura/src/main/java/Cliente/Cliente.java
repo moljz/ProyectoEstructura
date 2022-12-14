@@ -4,7 +4,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author jafet
+ * @author jafet araya
  */
 public class Cliente {
 
