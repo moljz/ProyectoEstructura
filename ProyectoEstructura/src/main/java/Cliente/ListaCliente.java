@@ -15,14 +15,16 @@ public class ListaCliente {
             JOptionPane.showMessageDialog(null, "la cedula agregada ya existe");
 
         } else {
-            if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
+            if (cabeza == null) { //Si la lista está vacía 
+                //solo asignamos nuevo nodo 
                 cabeza = new NodoCliente(c);
             } else if (cabeza.getNext() == null) {
                 cabeza.setNext(new NodoCliente(c));
 
             } else {
                 NodoCliente aux = (NodoCliente) cabeza;
-                NodoCliente temp = new NodoCliente(c);//Creo temp para crear el nodo p 
+                NodoCliente temp = new NodoCliente(c);//Creo temp para crear 
+                //el nodo p 
                 temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
                 aux.setNext(temp); //Enlazo el siguiente de aux al temp 
             }
@@ -129,7 +131,8 @@ public class ListaCliente {
         if (cabeza != null) {//Si hay algo en la lista buscamos 
             if (cabeza.getDato().getCedula().equals(cedula)) {
                 cabeza = cabeza.getNext();
-                JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");
+                JOptionPane.showMessageDialog(null, "Usuario eliminado"
+                        + " con exito");
             } else {
                 NodoCliente aux = cabeza;//Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 

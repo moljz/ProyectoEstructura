@@ -24,8 +24,10 @@ public class ListaVehiculoAsignado {
         if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
             cabeza = new NodoVehiculo(v);
         } else if (v.getAno() < cabeza.getDato().getAno()) {//Sí existe un nodo 
-            //adentro y el nodo a agregar tiene un id menor al nodo que ya existe 
-            NodoVehiculo aux = new NodoVehiculo(v); //Creo el nodo aux con v de parámetro
+            //adentro y el nodo a agregar tiene un id menor al nodo
+            //que ya existe 
+            NodoVehiculo aux = new NodoVehiculo(v); //Creo el nodo aux
+            //con v de parámetro
             aux.setNext(cabeza);   //Coloco aux a la izq de la cabeza 
             cabeza = aux;     //Cabeza ahora hace referencia al nuevo elemento 
             //Este else if funciona si la lista ya tiene un solo elemento 
@@ -34,7 +36,8 @@ public class ListaVehiculoAsignado {
             //haya nada ahí 
             cabeza.setNext(new NodoVehiculo(v));
         } else {
-            //Este método lo usamos para insertar al medio y al final de la lista 
+            //Este método lo usamos para insertar al medio y al final
+            //de la lista 
             NodoVehiculo aux = cabeza;
             while (aux.getNext() != null && aux.getNext().getDato().getAno() < v.getAno()) {
                 aux = aux.getNext();

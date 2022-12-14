@@ -31,8 +31,8 @@ public class Cliente {
 
     }
 
-    public Cliente(String cedula, String nomCompleto, String fechaNac, String correo,
-            Categoria categoria) {
+    public Cliente(String cedula, String nomCompleto, String fechaNac,
+            String correo, Categoria categoria) {
 
         this.cedula = cedula;
         this.nomCompleto = nomCompleto;
