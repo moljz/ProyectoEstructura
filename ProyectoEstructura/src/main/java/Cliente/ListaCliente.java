@@ -50,6 +50,20 @@ public class ListaCliente {
         return esta;
     }
 
+    public void buscarPorCedula(String Cedula) {
+        if (cabeza != null) {
+            //Si hay algo en la lista busca
+            NodoCliente aux = (NodoCliente) cabeza;
+            //Utilizo aux como indice 
+            //Mientras no se acabe la lista y el elemento de la lista sea 
+            //diferente del buscado
+            while (aux != null && aux.getDato().getCedula() != Cedula) {
+                aux = aux.getNext(); //avanzo en la lista 
+            }
+            System.out.println(aux.imprimirDatos() + "\n");
+        }
+    }
+
     public void modifica(Cliente c) {
         if (cabeza != null) {
             //Si hay algo en la lista buscamos
@@ -69,7 +83,6 @@ public class ListaCliente {
         }
 
     }
-
 
     public void elimina(String cedula) {
 
@@ -97,9 +110,9 @@ public class ListaCliente {
     @Override
     public String toString() {
         NodoCliente aux = (NodoCliente) cabeza;
-        String s = "Lista: ";
+        String s = "Estos son los clientes registrados:\n";
         while (aux != null) {
-            s += aux + ", ";
+            s += aux + "\n";
             aux = aux.getNext();
         }
         return s;
