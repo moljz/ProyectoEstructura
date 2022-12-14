@@ -25,7 +25,7 @@ public class Main {
         //Esto se usa para reacomodar la lista una vez que se modifica un vehículo
         laLista.inserta(laLista.extrae("9DASD2"));
         //System.out.println(laLista);
-        //laLista.elimina("971231");
+        laLista.elimina("9DASD2");
         System.out.println(laLista);
 
     }

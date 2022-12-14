@@ -1,5 +1,7 @@
 package Vehiculo;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Maria Gabriela
@@ -110,7 +112,7 @@ public class ListaVehiculo {
     //Busca un vehículo por NumPlaca y lo elimina 
     public void elimina(String NumPlaca) {
         //Buscamos el vehículo por num plac, si lo encuentra lo elimina
-        if (cabeza != null) {//Si hay algo en la lista buscamos 
+        if (cabeza != null && cabeza.getDato().isAlquilado() != true) {//Si hay algo en la lista buscamos 
             if (cabeza.getDato().getNumPlaca() == NumPlaca) {
                 cabeza = cabeza.getNext();
             } else {
@@ -125,7 +127,8 @@ public class ListaVehiculo {
                     aux.setNext(aux.getNext().getNext());//Cambio las referencias 
                 }
             }
-
+        } else {
+            JOptionPane.showMessageDialog(null, "Este vehículo no se puede eliminar debido a que ha sido alquilado.");
         }
     }
     
