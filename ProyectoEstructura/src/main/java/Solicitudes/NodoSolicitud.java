@@ -31,7 +31,9 @@ public class NodoSolicitud {
 
     @Override
     public String toString() {
-        return "Detalles de la solicitud: \nCedula del cliente: " + dato.getCliente().getCedula() + "\nCategoría: " + dato.getCliente().getCategoria()
+        return "Detalles de la solicitud: \nCedula del cliente: " + 
+                dato.getCliente().getCedula() + "\nCategoría: " 
+                + dato.getCliente().getCategoria()
                 + "\nCantidad de días: "
                 + dato.getCantDias() + "\nMinimo de pasajeros: "
                 + dato.getMinPasajeros() + "\nMarca: " + dato.getMarca()
