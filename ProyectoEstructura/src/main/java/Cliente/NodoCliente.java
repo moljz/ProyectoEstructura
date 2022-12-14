@@ -4,13 +4,13 @@ package Cliente;
  *
  * @author jafet
  */
-public class Nodo {
+public class NodoCliente {
 
     private Cliente dato;
-    private Nodo next;
+    private NodoCliente next;
 
 
-    public Nodo(Cliente dato) {
+    public NodoCliente(Cliente dato) {
         this.dato = dato;
     }
 
@@ -22,11 +22,11 @@ public class Nodo {
         this.dato = dato;
     }
 
-    public Nodo getNext() {
+    public NodoCliente getNext() {
         return next;
     }
 
-    public void setNext(Nodo next) {
+    public void setNext(NodoCliente next) {
         this.next = next;
     }
 

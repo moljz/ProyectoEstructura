@@ -6,9 +6,9 @@ import javax.swing.JOptionPane;
  *
  * @author jafet
  */
-public class Lista {
+public class ListaCliente {
 
-    private Nodo cabeza;
+    private NodoCliente cabeza;
 
     public void inserta(Cliente c) {
         if (existe(c.getCedula())) {
@@ -16,13 +16,13 @@ public class Lista {
 
         } else {
             if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
-                cabeza = new Nodo(c);
+                cabeza = new NodoCliente(c);
             } else if (cabeza.getNext() == null) {
-                cabeza.setNext(new Nodo(c));
+                cabeza.setNext(new NodoCliente(c));
 
             } else {
-                Nodo aux = (Nodo) cabeza;
-                Nodo temp = new Nodo(c);//Creo temp para crear el nodo p 
+                NodoCliente aux = (NodoCliente) cabeza;
+                NodoCliente temp = new NodoCliente(c);//Creo temp para crear el nodo p 
                 temp.setNext(aux.getNext()); //Enlazo temp al siguiente de aux
                 aux.setNext(temp); //Enlazo el siguiente de aux al temp 
             }
@@ -36,7 +36,7 @@ public class Lista {
 
         if (cabeza != null) {
             //Si hay algo en la lista busca
-            Nodo aux = (Nodo) cabeza;
+            NodoCliente aux = (NodoCliente) cabeza;
             //Utilizo aux como indice 
             //Mientras no se acabe la lista y el elemento de la lista sea 
             //diferente del buscado
@@ -51,7 +51,7 @@ public class Lista {
     public void modifica(Cliente c) {
         if (cabeza != null) {
             //Si hay algo en la lista buscamos
-            Nodo aux = cabeza; //Utilizo aux como indice 
+            NodoCliente aux = cabeza; //Utilizo aux como indice 
             //Mientras no se acabe la lista y el elemento de la lista sea 
             //diferente del buscado
             while (aux != null && aux.getDato().getCedula() != c.getCedula()) {
@@ -76,7 +76,7 @@ public class Lista {
                 cabeza = cabeza.getNext();
                 JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");
             } else {
-                Nodo aux = cabeza;//Utilizo aux como indice 
+                NodoCliente aux = cabeza;//Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
                 while (aux.getNext() != null && aux.getNext().getDato().getCedula() != cedula) {
@@ -93,7 +93,7 @@ public class Lista {
 
     @Override
     public String toString() {
-        Nodo aux = (Nodo) cabeza;
+        NodoCliente aux = (NodoCliente) cabeza;
         String s = "Lista: ";
         while (aux != null) {
             s += aux + ", ";

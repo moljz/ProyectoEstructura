@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         /* G;Esto va a dar error porque ahora categoría es un enum entonces hay que 
         pasarle un obj de tipo enum creo */
-        Lista listaPrueba = new Lista();
+        ListaCliente listaPrueba = new ListaCliente();
         Cliente a = new Cliente("11111", "Jose Fernandez Herrera", "19/02/2022", "asasd@hotmail.com", Categoria.Bronce);
         Cliente b = new Cliente("55555", "Luis Fernandez Herrera", "19/02/2022", "asasd@hotmail.com", Categoria.Oro);
         Cliente c = new Cliente("22222", "Francisco Fernandez Herrera", "19/02/2022", "asasd@hotmail.com", Categoria.Plata);

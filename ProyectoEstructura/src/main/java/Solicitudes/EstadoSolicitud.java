@@ -4,6 +4,6 @@ package Solicitudes;
  *
  * @author Juan Carlos
  */
-public enum Estado {
+public enum EstadoSolicitud {
     Registrada, Procesada, Rechazada, Finalizada
 }
