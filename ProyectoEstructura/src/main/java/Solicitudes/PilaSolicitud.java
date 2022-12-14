@@ -4,12 +4,12 @@ package Solicitudes;
  *
  * @author Maria Gabriela
  */
-public class PilaSolicitudes {
+public class PilaSolicitud {
 
     NodoSolicitud cima;
     int largo;
 
-    public PilaSolicitudes() {
+    public PilaSolicitud() {
         //Es un objeto por eso se inicializa en null, cuando la cima deja de 
         //ser nula se crea una pila
         this.cima = null;
@@ -134,7 +134,7 @@ public class PilaSolicitudes {
         //Recorre la pila hasta el último nodo
         while (aux != null) {
             //\t es para poner un simbolo en un string
-            System.out.println("|\t" + aux.getDato() + "\t|");
+            System.out.println("|\t" + aux + "\t|");
             System.out.println("-------------------");
             aux = aux.getAtras();
         }

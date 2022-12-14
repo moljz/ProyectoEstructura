@@ -44,7 +44,7 @@ public class NodoVehiculo {
                 "\nTipo de combustible: " + dato.getCombustible() +"\nEstado: " 
                 + dato.getEstado() + "\nPrecio del día: " + dato.getPrecioDia()
                 + "\nCilindrada: " + dato.getCilindrada() + "\nLas extras son: "
-                + dato.getExtras() + "Ha sido alquilado?: " + dato.isAlquilado() +"\n";
+                + dato.getExtras() + "\n";
     }
     
 }

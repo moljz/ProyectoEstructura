@@ -182,9 +182,7 @@ public class Solicitud {
                             + " la categoría máxima");
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se modificó la categoría.");
-        }
+        } 
     }
     
     public void ajustarCategoriaMonto(){
@@ -211,11 +209,9 @@ public class Solicitud {
                             + " la categoría máxima");
                 }
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se modificó la categoría.");
-        }
+        } 
     }
-
+    
     //Este método convierte una cadena de texto separada por coma en una cola
     public Cola encolarExtras(String extras) {
         //Genera la cola a retornar
