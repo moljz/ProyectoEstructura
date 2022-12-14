@@ -23,6 +23,7 @@ public class ListaVehiculo {
     public void setCabeza(NodoVehiculo cabeza) {
         this.cabeza = cabeza;
     }
+
     //Molina: La lista inserta los elementos en el orden deseado; sin embargo,
     //duplica el primer elemento que se ingresa en la lista por lo que es necesario 
     //solventarlo para darlo por corregido
@@ -65,60 +66,71 @@ public class ListaVehiculo {
             //Utilizo aux como indice 
             //Mientras no se acabe la lista y el elemento de la lista sea 
             //diferente del buscado
-            while (aux != null && aux.getDato().getNumPlaca() != NumPlaca) {
+            while (aux != null && !aux.getDato().getNumPlaca().equals(NumPlaca)) {
                 aux = aux.getNext(); //avanzo en la lista 
             }
-            esta = (aux != null && aux.getDato().getNumPlaca() == NumPlaca);
+            esta = (aux != null && aux.getDato().getNumPlaca().equals(NumPlaca));
         }
         return esta;
     }
 
-    public void buscarPlaca(String NumPlaca) {
-        //Vehiculo tiene ese número de placa 
-        if (cabeza != null) {
-            //Si hay algo en la lista busca
-            NodoVehiculo aux = cabeza;
-            //Utilizo aux como indice 
-            //Mientras no se acabe la lista y el elemento de la lista sea 
-            //diferente del buscado
-            while (aux != null && aux.getDato().getNumPlaca() != NumPlaca) {
-                aux = aux.getNext(); //avanzo en la lista 
+    public void buscarPorPlaca(String NumPlaca) {
+        if (existe(NumPlaca)) {
+            //Vehiculo tiene ese número de placa 
+            if (cabeza != null) {
+                //Si hay algo en la lista busca
+                NodoVehiculo aux = cabeza;
+                //Utilizo aux como indice 
+                //Mientras no se acabe la lista y el elemento de la lista sea 
+                //diferente del buscado
+                while (aux != null && !aux.getDato().getNumPlaca().equals(NumPlaca)) {
+                    aux = aux.getNext(); //avanzo en la lista 
+                }
+                System.out.println(aux);
             }
-            System.out.println(aux);
+        } else {
+            JOptionPane.showMessageDialog(null, "No existe esa placa.");
         }
+
     }
-    
-    //Molina: Ampliar el método para modificar todos los datos excepto la placa
-    //Método para modificar datos excepto NumPlaca
-    //Todo gucci por acá ;)
-    public void modifica(Vehiculo v) {
-        //Busca si hay un vehículo con ese numPlaca y modifica sus datos excepto
-        //el número de Placa 
-        if (cabeza != null) {
-            //Si hay algo en la lista buscamos
-            NodoVehiculo aux = cabeza; //Utilizo aux como indice 
-            //Mientras no se acabe la lista y el elemento de la lista sea 
-            //diferente del buscado
-            //Molina: Se cambia el operador de "==" a "!=" ya que si son 
-            //iguales el método no ejecuta cambios
-            while (aux != null && aux.getDato().getNumPlaca() != v.getNumPlaca()) {
-                aux = aux.getNext(); //avanzo en la lista 
-            }//Si lo encuentra hago el cambio de datos
-            if (aux != null && aux.getDato().getNumPlaca() == v.getNumPlaca()) {
-                //Cambia la marca 
-                aux.getDato().setMarca(v.getMarca());
-                aux.getDato().setAno(v.getAno());
-                aux.getDato().setCilindrada(v.getCilindrada());
-                aux.getDato().setModelo(v.getModelo());
-                aux.getDato().setColor(v.getColor());
-                aux.getDato().setNumPasajeros(v.getNumPasajeros());
-                aux.getDato().setPrecioDia(v.getPrecioDia());
-                aux.getDato().setCombustible(v.getCombustible());
-                aux.getDato().setEstado(v.getEstado());
-                aux.getDato().setAlquilado(v.isAlquilado());
-                //Gabriela: No sé que procede con "estado" que no sé cómo hacer
-                //para ponerlo para modificar como es un enum 
+
+    public void modificaPorPlaca() {
+        //Muestra el mensaje para solicitar datos
+        JOptionPane.showMessageDialog(null, "Por favor ingrese la placa a"
+                + " modificar seguida de los datos correspondientes.");
+        //Crea la instancia para el cambio de datos
+        Vehiculo nuevoVehiculo = new Vehiculo();
+        //Hace la asignación para validar si la cédula existe
+        String Placa = nuevoVehiculo.getNumPlaca();
+        //Verifica si la cédula existe
+        if (existe(Placa)) {
+
+            if (cabeza != null) {
+                //Si hay algo en la lista busca
+                NodoVehiculo aux = (NodoVehiculo) cabeza;
+                //Utilizo aux como indice 
+                //Mientras no se acabe la lista y el elemento de la lista sea 
+                //diferente del buscado
+                while (aux != null && !aux.getDato().getNumPlaca().equals(Placa)) {
+                    aux = aux.getNext(); //avanzo en la lista 
+                }
+                //Cambio los datos a excepción de la cédula de acuerdo a lo 
+                //indicado
+                aux.getDato().setAno(nuevoVehiculo.getAno());
+                aux.getDato().setMarca(nuevoVehiculo.getMarca());
+                aux.getDato().setModelo(nuevoVehiculo.getModelo());
+                aux.getDato().setColor(nuevoVehiculo.getColor());
+                aux.getDato().setNumPasajeros(nuevoVehiculo.getNumPasajeros());
+                aux.getDato().setCombustible(nuevoVehiculo.getCombustible());
+                aux.getDato().setEstado(nuevoVehiculo.getEstado());
+                aux.getDato().setPrecioDia(nuevoVehiculo.getPrecioDia());
+                aux.getDato().setCilindrada(nuevoVehiculo.getCilindrada());
+                aux.getDato().setExtras(nuevoVehiculo.getExtras());
             }
+        } else {
+            //Si no está registrada se muestra el mensaje
+            JOptionPane
+                    .showMessageDialog(null, "Esta placa no está registrada");
         }
 
     }
@@ -126,44 +138,50 @@ public class ListaVehiculo {
     //Molina: Funcional
     //Busca un vehículo por NumPlaca y lo elimina 
     public void elimina(String NumPlaca) {
-        //Buscamos el vehículo por num plac, si lo encuentra lo elimina
-        if (cabeza != null && cabeza.getDato().isAlquilado() != true) {//Si hay algo en la lista buscamos 
-            if (cabeza.getDato().getNumPlaca() == NumPlaca) {
-                cabeza = cabeza.getNext();
-            } else {
-                NodoVehiculo aux = cabeza;//Utilizo aux como indice 
-                //Mientras no se acabe la lista y el elemento de la lista sea 
-                //diferente del buscado
-                while (aux.getNext() != null && aux.getNext().getDato().getNumPlaca() != NumPlaca) {
-                    aux = aux.getNext();
-                }//Avanzo en la lista
-                //Si es el de adelante lo borro
-                if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca() == NumPlaca) {
-                    aux.setNext(aux.getNext().getNext());//Cambio las referencias 
+        if (existe(NumPlaca)) {
+            //Buscamos el vehículo por num plac, si lo encuentra lo elimina
+            if (cabeza != null && cabeza.getDato().isAlquilado() != true) {//Si hay algo en la lista buscamos 
+                if (cabeza.getDato().getNumPlaca().equals(NumPlaca)) {
+                    cabeza = cabeza.getNext();
+                    JOptionPane.showMessageDialog(null, "Se eliminó el vehículo con éxito");
+                } else {
+                    NodoVehiculo aux = cabeza;//Utilizo aux como indice 
+                    //Mientras no se acabe la lista y el elemento de la lista sea 
+                    //diferente del buscado
+                    while (aux.getNext() != null && !aux.getNext().getDato().getNumPlaca().equals(NumPlaca)) {
+                        aux = aux.getNext();
+                    }//Avanzo en la lista
+                    //Si es el de adelante lo borro
+                    if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca().equals(NumPlaca)) {
+                        aux.setNext(aux.getNext().getNext());//Cambio las referencias 
+                    }
+                    JOptionPane.showMessageDialog(null, "Se eliminó el vehículo con éxito");
                 }
+            } else {
+                JOptionPane.showMessageDialog(null, "Este vehículo no se puede eliminar debido a que ha sido alquilado.");
             }
         } else {
-            JOptionPane.showMessageDialog(null, "Este vehículo no se puede eliminar debido a que ha sido alquilado.");
+            JOptionPane.showMessageDialog(null, "Esta placa no está registrada");
         }
+
     }
-    
+
     public Vehiculo extrae(String NumPlaca) {
         Vehiculo v = null;
         //si una persona tiene el id, lo extrae (eliminando y retornando)
         if (cabeza != null) { //Si hay algo en la lista buscaré
-            if (cabeza.getDato().getNumPlaca()== NumPlaca) {
+            if (cabeza.getDato().getNumPlaca().equals(NumPlaca)) {
                 cabeza = cabeza.getNext();
             } else {
                 NodoVehiculo aux = cabeza; //utilizo aux como indice
                 //Mientras no se acabe la lista y el elemento
                 //de la lista sea menor que el buscado
-                while (aux.getNext() != null && aux.getNext().getDato().getNumPlaca()
-                        != NumPlaca) {
+                while (aux.getNext() != null && !aux.getNext().getDato().getNumPlaca().equals(NumPlaca)) {
                     aux = aux.getNext();
                     //avanzo en la lista
                 }
                 // Si es el de adelante... quardo la persona y lo borro
-                if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca()== NumPlaca) {
+                if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca().equals(NumPlaca)) {
                     v = aux.getNext().getDato();
                     aux.setNext(aux.getNext().getNext());//cambio las referencias
                 }

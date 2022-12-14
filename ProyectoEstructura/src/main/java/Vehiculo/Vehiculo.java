@@ -1,4 +1,4 @@
-    package Vehiculo;
+package Vehiculo;
 
 import Extras.Cola;
 import javax.swing.JOptionPane;
@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
  */
 public class Vehiculo {
     //Atributos 
-    
+
     private int ano;
     private String marca;
     private String modelo;
@@ -20,8 +20,7 @@ public class Vehiculo {
     private EstadoVehiculo estado;
     private double precioDia;
     private int cilindrada;
-    private String cadenaExtras; //Recibe las extras ingresadas en texto plano
-    private Cola extras; 
+    private Cola extras;
     //Este atributo define si ha sido o no alquilado el vehículo
     private boolean alquilado = false;
 
@@ -29,22 +28,57 @@ public class Vehiculo {
     public Vehiculo(int ano, String marca, String modelo, String numPlaca,
             String color, int NumPasajeros, String combustible, EstadoVehiculo estado,
             double precioDia, int cilindrada, String cadenaExtras, boolean alquilado) {
-        this.ano = ano;
-        this.marca = marca;
-        this.modelo = modelo;
-        this.numPlaca = numPlaca;
-        this.color = color;
-        this.NumPasajeros = NumPasajeros;
-        this.combustible = combustible;
-        this.estado = estado;
-        this.precioDia = precioDia;
-        this.cilindrada = cilindrada;
-        this.extras = encolarExtras(cadenaExtras);
+        this.numPlaca = JOptionPane.showInputDialog("Digite el número de placa:"
+                + " ");
+        this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
+                + "año del vehículo: "));
+        this.marca = JOptionPane.showInputDialog("Digite la marca del "
+                + "vehículo: ");
+        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
+                + " vehículo: ");
+        this.color = JOptionPane.showInputDialog("Digite el color del vehículo:"
+                + " ");
+        this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                + " la cantidad de pasajeros del vehículo"));
+        this.combustible = JOptionPane.showInputDialog("Digite el tipo de"
+                + " combustible: ");
+        this.estado = definirEstado();
+        this.precioDia = Double.parseDouble(JOptionPane.showInputDialog("Digite"
+                + " el año del vehículo: "));
+        this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                + " la cilindrada del vehículo"));
+        this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
+                + "las extras del vehículo, estas deben estar separadas por "
+                + "una coma (,)"));
         this.alquilado = alquilado;
     }
 
     //Constructor default 
     public Vehiculo() {
+
+        this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
+                + "año del vehículo: "));
+        this.marca = JOptionPane.showInputDialog("Digite la marca del "
+                + "vehículo: ");
+        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
+                + " vehículo: ");
+        this.numPlaca = JOptionPane.showInputDialog("Digite el número de placa:"
+                + " ");
+        this.color = JOptionPane.showInputDialog("Digite el color del vehículo:"
+                + " ");
+        this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                + " la cantidad de pasajeros del vehículo"));
+        this.combustible = JOptionPane.showInputDialog("Digite el tipo de"
+                + " combustible: ");
+        this.estado = definirEstado();
+        this.precioDia = Double.parseDouble(JOptionPane.showInputDialog("Digite"
+                + " el precio por día del vehículo: "));
+        this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                + " la cilindrada del vehículo"));
+        this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
+                + "las extras del vehículo, estas deben estar separadas por "
+                + "una coma (,)"));
+        this.alquilado = alquilado;
     }
 
     //Get and Sets 
@@ -127,7 +161,7 @@ public class Vehiculo {
     public void setExtras(Cola extras) {
         this.extras = extras;
     }
-    
+
     public EstadoVehiculo getEstado() {
         return estado;
     }
@@ -135,15 +169,7 @@ public class Vehiculo {
     public void setEstado(EstadoVehiculo estado) {
         this.estado = estado;
     }
-    
-    public String getCadenaExtras() {
-        return cadenaExtras;
-    }
 
-    public void setCadenaExtras(String cadenaExtras) {
-        this.cadenaExtras = cadenaExtras;
-    }
-    
     public boolean isAlquilado() {
         return alquilado;
     }
@@ -152,34 +178,43 @@ public class Vehiculo {
         this.alquilado = alquilado;
     }
 
-    public void pedir_dato() {
-
-        this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
-                + "año del vehículo: "));
-        this.marca = JOptionPane.showInputDialog("Digite la marca del "
-                + "vehículo: ");
-        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
-                + " vehículo: ");
-        this.numPlaca = JOptionPane.showInputDialog("Digite su nombre: ");
-        this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
-                + " su número de vuelo "));
-        this.combustible = JOptionPane.showInputDialog("Digite su nombre: ");
-        this.precioDia = Double.parseDouble(JOptionPane.showInputDialog("Digite"
-                + " su número de vuelo "));
-        this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
-                + " su edad: "));
+    public EstadoVehiculo definirEstado() {
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
+                "Indique una opción:\n1. Disponible.\n2.Alquilado.\n3. En reparacion.\n4. Fuera de circulacion"));
+        switch (opcion) {
+            case 1:
+                this.estado = EstadoVehiculo.Disponible;
+                break;
+            case 2:
+                this.estado = EstadoVehiculo.Alquilado;
+                break;
+            case 3:
+                this.estado = EstadoVehiculo.En_reparacion;
+                break;
+            case 4:
+                this.estado = EstadoVehiculo.Fuera_Circulacion;
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Inserte una opción valida");
+        }
+        return this.estado;
     }
-    
-    public Cola encolarExtras(String extras){
-//        String extras = "Vidrio polarizado, Aire acondicionado, Luces LED";
+
+    //Este método convierte una cadena de texto separada por coma en una cola
+    public Cola encolarExtras(String extras) {
+        //Genera la cola a retornar
         Cola colaExtras = new Cola();
+        //Crea un arreglo para almacenar las palabras
         String[] nodos = new String[extras.length()];
+        //Recorre toda la cadena de texto
         for (int i = 0; i < nodos.length; i++) {
+            //Separa la cadena por comas
             nodos = extras.split(",");
+            //Encola cada nodo
             colaExtras.encola(new Extras.Nodo(nodos[i]));
         }
+        //Retorna la cola
         return colaExtras;
     }
 
-    
 }

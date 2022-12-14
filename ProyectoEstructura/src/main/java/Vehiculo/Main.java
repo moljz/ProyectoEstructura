@@ -20,8 +20,8 @@ public class Main {
 
         System.out.print(laLista);
         System.out.println("Vehiculo buscado por placa");
-        laLista.buscarPlaca("971231");
-        laLista.modifica(new Vehiculo(1800, "Subaru", "X312", "9DASD2", "Amarillo", 5, "Diesel", EstadoVehiculo.Alquilado, 5000, 1200, "Vidrio polarizado,Aire acondicionado,Luces LED", true));
+        laLista.buscarPorPlaca("971231");
+        laLista.modificaPorPlaca();
         //Esto se usa para reacomodar la lista una vez que se modifica un vehículo
         laLista.inserta(laLista.extrae("9DASD2"));
         //System.out.println(laLista);

@@ -1,6 +1,8 @@
 package Cliente;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -8,24 +10,35 @@ import javax.swing.JOptionPane;
  */
 public class Cliente {
 
-
     private String cedula;
     private String nomCompleto;
     private String fechaNac;
     private String correo;
     private Categoria categoria;
 
+    
+    public Cliente() {
+
+        this.cedula = JOptionPane.showInputDialog("Digite la cedula");
+
+        this.nomCompleto = JOptionPane.showInputDialog("Digite el nombre"
+                + " completo: ");
+        this.fechaNac = JOptionPane.showInputDialog("Digite la"
+                + "fecha de nacimiento: ");
+        this.correo = JOptionPane.showInputDialog("Digite su correo: ");
+
+        this.categoria = definirCategoria();
+
+    }
 
     public Cliente(String cedula, String nomCompleto, String fechaNac, String correo,
             Categoria categoria) {
 
-
-            this.cedula = cedula;
-            this.nomCompleto = nomCompleto;
-            this.fechaNac = fechaNac;
-            this.correo = correo;
-            this.categoria = categoria;
-        
+        this.cedula = cedula;
+        this.nomCompleto = nomCompleto;
+        this.fechaNac = fechaNac;
+        this.correo = correo;
+        this.categoria = categoria;
 
     }
 
@@ -69,6 +82,28 @@ public class Cliente {
         this.categoria = categoria;
     }
 
+    public Categoria definirCategoria() {
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog(null, 
+                "Indique una opción:\n1. Zafiro.\n2.Oro.\n3. Plata.\n4. Bronce"));
+        switch (opcion) {
+            case 1:
+                this.categoria = Categoria.Zafiro;
+                break;
+            case 2:
+                this.categoria = Categoria.Oro;
+                break;
+            case 3:
+                this.categoria = Categoria.Plata;
+                break;
+            case 4:
+                this.categoria = Categoria.Bronce;
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Inserte una opción valida");
+        }
+        return this.categoria;
+    }
+
     public void pedir_dato() {
 
         this.cedula = JOptionPane.showInputDialog("Digite la cedula");
@@ -79,8 +114,7 @@ public class Cliente {
                 + "fecha de nacimiento: ");
         this.correo = JOptionPane.showInputDialog("Digite su correo: ");
 
-        this.categoria =Categoria.valueOf(JOptionPane.showInputDialog
-        ("Digite su categoría de cliente"));
+        this.categoria = Categoria.valueOf(JOptionPane.showInputDialog("Digite su categoría de cliente"));
     }
 
 }

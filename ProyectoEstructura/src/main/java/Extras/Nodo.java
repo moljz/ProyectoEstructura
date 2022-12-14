@@ -31,7 +31,7 @@ public class Nodo {
 
     @Override
     public String toString() {
-        return "El valor es: " + dato;
+        return dato;
     }
 
     

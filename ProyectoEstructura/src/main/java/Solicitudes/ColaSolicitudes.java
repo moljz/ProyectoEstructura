@@ -1,9 +1,11 @@
 package Solicitudes;
 
 import Cliente.Categoria;
+import Vehiculo.EstadoVehiculo;
 import Vehiculo.ListaVehiculo;
 import Vehiculo.NodoVehiculo;
 import Vehiculo.Vehiculo;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +17,6 @@ public class ColaSolicitudes {
     private NodoSolicitud frente;
     private NodoSolicitud ultimo;
     private int largo; //Lleva el tamaño de la cola
-    ListaVehiculoAsignado listaAsignada = new ListaVehiculoAsignado();
 
     //No es necesario ponerlo
     public ColaSolicitudes() {
@@ -66,40 +67,48 @@ public class ColaSolicitudes {
     //El monto tiene que quedar en la solicitud
     //Si el monto es mayor a 70 reds sube la categoría
     //Si no hay vehículos queda como rechazada
-    public NodoSolicitud atiende(ListaVehiculo listaGlobal, ColaSolicitudes colaAtendida) {
-        
-        NodoSolicitud aux = frente;
-        colaAtendida.encola(aux);
-        while (aux.getDato().getEstado() != EstadoSolicitud.Registrada) {
-            aux = aux.getAtras();
-        }
-        if (aux.getDato().getEstado() == EstadoSolicitud.Registrada) {
+    public void atiende(ListaVehiculo listaGlobal, ListaVehiculo listaVehiculoAsignado, ColaSolicitudes colaAtendida) {
+        if (frente != null) {
+            NodoSolicitud aux = frente;
+            colaAtendida.encola(aux);
+            if (listaGlobal.getCabeza() == null) {
+                aux.getDato().setEstado(EstadoSolicitud.Rechazada);
+                JOptionPane.showMessageDialog(null, "No hay vehículos, esta"
+                        + " solicitud se coloca como rechazada");
+            } else {
+                Vehiculo extraido = listaGlobal.getCabeza().getDato();
+                extraido.setEstado(EstadoVehiculo.Alquilado);
+                listaVehiculoAsignado.inserta(extraido);
+                listaGlobal.extrae(listaGlobal.getCabeza().getDato().getNumPlaca());
 
-            Vehiculo extraido = listaGlobal.getCabeza().getDato();
-            listaAsignada.inserta(extraido);
-            listaGlobal.extrae(listaGlobal.getCabeza().getDato().getNumPlaca());
-            //Se usa el auxiliar para poder acceder posteriormente al frente
-            if (aux != null) {
-                //Esta línea pasa el nodo de frente al siguiente en la cola
-                aux.getDato().setEstado(EstadoSolicitud.Procesada);
-                System.out.println(aux.getDato().getEstado());
-                frente = frente.getAtras();
-                //Quita la relación con el nodo de atrás ya que define al de atrás 
-                //como nulo
-                aux.setAtras(null);
-                
-            }//Este método le devuelve el nodo que sale de la cola al usuario ya que 
-            //si esto no se hace el nodo se pierde se utiliza normalmente para 
-            //imprimirlo por ejemplo
-            System.out.println("Los vehículos asignados son " + listaAsignada);
+                aux.getDato().setMontoTotal(Math.round((extraido.getPrecioDia() * aux.getDato().getCantDias()) * 1.13));
+                aux.getDato().ajustarCategoriaMonto();
+                System.out.println(aux.getDato().getMontoTotal());
+                //Se usa el auxiliar para poder acceder posteriormente al frente
+                if (aux != null) {
+                    //Esta línea pasa el nodo de frente al siguiente en la cola
+                    aux.getDato().setPlacaVehiculo(extraido.getNumPlaca());
+                    aux.getDato().setEstado(EstadoSolicitud.Procesada);
+                    System.out.println(aux.getDato().getEstado());
+                    frente = frente.getAtras();
+                    //Quita la relación con el nodo de atrás ya que define al de atrás 
+                    //como nulo
+                    aux.setAtras(null);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No quedan solicitudes "
+                            + "pendientes");
+                }
+            }
+
         } else {
-            System.out.println("No quedan solicitudes en estado registrada.");
+            JOptionPane.showMessageDialog(null, "No hay solicitudes en estado 'Registrado'");
         }
-        
-        System.out.println("La cola de solicitudes atendida es");
-        System.out.println(colaAtendida);
+
+//Este método le devuelve el nodo que sale de la cola al usuario ya que 
+        //si esto no se hace el nodo se pierde se utiliza normalmente para 
+        //imprimirlo por ejemplo
         largo--;
-        return aux;
     }
 
     @Override

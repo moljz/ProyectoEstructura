@@ -59,7 +59,7 @@ public class Cola {
         String s = "";
         Nodo aux = frente;
         while (aux != null) {
-            s += aux + "\n";
+            s += aux + ", ";
             aux = aux.getAtras();
         }
         return s;
