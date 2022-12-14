@@ -5,7 +5,7 @@ package Vehiculo;
  *
  * @author Maria Gabriela
  */
-public enum Estado {
+public enum EstadoVehiculo {
      Disponible,
      Alquilado,
      En_reparacion,

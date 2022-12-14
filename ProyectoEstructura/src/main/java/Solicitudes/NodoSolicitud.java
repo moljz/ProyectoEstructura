@@ -4,12 +4,12 @@ package Solicitudes;
  *
  * @author Juan Carlos
  */
-public class Nodo {
+public class NodoSolicitud {
 
     private Solicitud dato;
-    private Nodo atras;
+    private NodoSolicitud atras;
 
-    public Nodo(Solicitud dato) {
+    public NodoSolicitud(Solicitud dato) {
         this.dato = dato;
     }
 
@@ -21,17 +21,18 @@ public class Nodo {
         this.dato = dato;
     }
 
-    public Nodo getAtras() {
+    public NodoSolicitud getAtras() {
         return atras;
     }
 
-    public void setAtras(Nodo atras) {
+    public void setAtras(NodoSolicitud atras) {
         this.atras = atras;
     }
 
     @Override
     public String toString() {
-        return "Detalles de la solicitud: \nCantidad de días: "
+        return "Detalles de la solicitud: \nCedula del cliente: " + dato.getCliente().getCedula() + "\nCategoría: " + dato.getCliente().getCategoria()
+                + "\nCantidad de días: "
                 + dato.getCantDias() + "\nMinimo de pasajeros: "
                 + dato.getMinPasajeros() + "\nMarca: " + dato.getMarca()
                 + "\nModelo: " + dato.getModelo() + "\nAño: " + dato.getAno()

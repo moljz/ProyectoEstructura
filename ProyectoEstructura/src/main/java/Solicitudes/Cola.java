@@ -1,37 +1,62 @@
 package Solicitudes;
 
+import Cliente.Categoria;
+
 /**
  *
  * @author Juan Carlos
  */
 public class Cola {
-        
+
     //Estos dos nodos comienzan como nulos
-    private Nodo frente; 
-    private Nodo ultimo;
+    private NodoSolicitud frente;
+    private NodoSolicitud ultimo;
     private int largo; //Lleva el tamaño de la cola
 
     //No es necesario ponerlo
     public Cola() {
     }
-    
-    public void encola(Nodo nuevoNodo){
+
+    public void encola(NodoSolicitud nuevoNodo) {
+        //NodoSolicitud aux = frente;
         if (frente == null) { //Indica que la cola está vacía
             //Esto define al primer nodo como frente y último al no haber más
             frente = nuevoNodo;
             ultimo = nuevoNodo;
         } else {
-            //Toma el último nodo y le setea como nodo de atrás al nuevo nodo
+//            if (nuevoNodo.getDato().getCliente().getCategoria() == Categoria.Zafiro) {
+//                nuevoNodo.setNext(frente);
+//                frente = nuevoNodo;
+//            } else if (nuevoNodo.getDato().getCliente().getCategoria() == Categoria.Oro) {
+//                while (aux.getDato() != null && aux.getDato().getCliente().getCategoria() == Categoria.Zafiro) {
+//                    aux = aux.getNext();
+//                }
+//                ultimo.setNext(nuevoNodo);
+//                ultimo = nuevoNodo;
+//
+//            } else if (nuevoNodo.getDato().getCliente().getCategoria() == Categoria.Plata) {
+//                while (aux.getDato() != null && aux.getDato().getCliente().getCategoria() != Categoria.Plata) {
+//                    aux = aux.getNext();
+//                }
+//                ultimo.setNext(nuevoNodo);
+//                ultimo = nuevoNodo;
+//
+//            } else {
+//                //Toma el último nodo y le setea como nodo de atrás al nuevo nodo
+//                ultimo.setNext(nuevoNodo);
+//            //Define como último al nuevo nodo
+//                ultimo = nuevoNodo;
+//            }
             ultimo.setAtras(nuevoNodo);
             //Define como último al nuevo nodo
             ultimo = nuevoNodo;
         }
         largo++;
     }
-    
-    public Nodo atiende(){
+
+    public NodoSolicitud atiende() {
         //Se usa el auxiliar para poder acceder posteriormente al frente
-        Nodo aux = frente;
+        NodoSolicitud aux = frente;
         if (frente != null) {
             //Esta línea pasa el nodo de frente al siguiente en la cola
             frente = frente.getAtras();
@@ -49,16 +74,14 @@ public class Cola {
     @Override
     public String toString() {
         String s = "";
-        Nodo aux = frente;
-        while(aux != null){
+        NodoSolicitud aux = frente;
+        while (aux != null) {
             //Cuando se sobreescribe el método ToString al pasar el objeto 
             //completo el automáticamente va a obtener el valor
-            s+= aux + "\n";
+            s += aux + "\n";
             aux = aux.getAtras();
         }
         return s;
     }
-    
-    
-    
+
 }

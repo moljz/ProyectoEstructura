@@ -4,14 +4,13 @@ package Vehiculo;
  *
  * @author Maria Gabriela
  */
-public class Nodo {
+public class NodoVehiculo {
 
     private Vehiculo dato; //donde se almacenará la info de la persona 
-    private Nodo next; //la referencia al siguiente obj de tipo Nodo que
-    //contiene una persona 
+    private NodoVehiculo next; //la referencia al siguiente obj de tipo NodoVehiculo que
 
     //Constructor que solo recibe persona, no se incluye el next 
-    public Nodo(Vehiculo dato) {
+    public NodoVehiculo(Vehiculo dato) {
         this.dato = dato;
     }
     //Get and sets 
@@ -24,11 +23,11 @@ public class Nodo {
         this.dato = dato;
     }
 
-    public Nodo getNext() {
+    public NodoVehiculo getNext() {
         return next;
     }
 
-    public void setNext(Nodo next) {
+    public void setNext(NodoVehiculo next) {
         this.next = next;
     }
 
@@ -47,6 +46,5 @@ public class Nodo {
                 + "\nCilindrada: " + dato.getCilindrada() + "\nLas extras son: "
                 + dato.getExtras() + "\n";
     }
- 
     
 }

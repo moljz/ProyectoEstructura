@@ -1,13 +1,18 @@
 package Solicitudes;
 
+import Cliente.Categoria;
+import Cliente.Cliente;
+import Vehiculo.Vehiculo;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Juan Carlos
  */
-
 //Esta clase tiene como finalidad definir los parámetros de las solicitudes
 public class Solicitud {
-    
+
+    private String fecha;
     private int cantDias;
     private int minPasajeros;
     private String marca;
@@ -15,15 +20,18 @@ public class Solicitud {
     private int ano;
     private String extras; //Este parametro debe asociarse a la misma que manejen los 
     //vehículos
-    private Estado estado;
-    //Es necesario evaluar la mejor manera de asociar la cola con la categoría
-    //del cliente
+    private EstadoSolicitud estado;
+    //Mediante este atributo se define la asociación con el cliente
+    private Cliente cliente;
+    private Vehiculo vehiculo;
 
     public Solicitud() {
     }
 
-    public Solicitud(int cantDias, int minPasajeros, String marca, 
-            String modelo, int ano, String extras, Estado estado) {
+    public Solicitud(String fecha, int cantDias, int minPasajeros, String marca,
+            String modelo, int ano, String extras, EstadoSolicitud estado, 
+            Cliente cliente) {
+        this.fecha = fecha;
         this.cantDias = cantDias;
         this.minPasajeros = minPasajeros;
         this.marca = marca;
@@ -31,13 +39,24 @@ public class Solicitud {
         this.ano = ano;
         this.extras = extras;
         this.estado = estado;
+        this.cliente = cliente;
+        //QUITAR COMENTARIO
+        //ajustarCategoria();
     }
 
-    public Estado getEstado() {
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public EstadoSolicitud getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(EstadoSolicitud estado) {
         this.estado = estado;
     }
 
@@ -88,6 +107,53 @@ public class Solicitud {
     public void setExtras(String extras) {
         this.extras = extras;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
     
+    public Vehiculo getVehiculo() {
+        return vehiculo;
+    }
+
+    public void setVehiculo(Vehiculo vehiculo) {
+        this.vehiculo = vehiculo;
+    }
     
+    //Este método se encarga de revisar la cantidad de días que se solicita de 
+    //alquiler, de acuerdo a esto verifica si se cambia la categoría del cliente
+    //o no
+    public void ajustarCategoria(){
+        if (this.getCantDias() >= 30) {
+            if (this.getCliente().getCategoria() != null) switch 
+                    (this.getCliente().getCategoria()) {
+                case Bronce -> {
+                    this.getCliente().setCategoria(Categoria.Plata);
+                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                            + " " + this.getCliente().getCategoria());
+                }
+                case Plata -> {
+                    this.getCliente().setCategoria(Categoria.Oro);
+                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                            + " " + this.getCliente().getCategoria());
+                }
+                case Oro -> {
+                    this.getCliente().setCategoria(Categoria.Zafiro);
+                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                            + " " + this.getCliente().getCategoria());
+                }
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Este cliente ya tiene"
+                            + " la categoría máxima");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se modificó la categoría.");
+        }
+    }
+
 }

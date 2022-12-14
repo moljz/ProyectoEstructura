@@ -1,4 +1,4 @@
-package Vehiculo;
+    package Vehiculo;
 
 import Extras.Cola;
 import javax.swing.JOptionPane;
@@ -17,7 +17,7 @@ public class Vehiculo {
     private String color;
     private int NumPasajeros;
     private String combustible;
-    private Estado estado;
+    private EstadoVehiculo estado;
     private double precioDia;
     private int cilindrada;
     private String cadenaExtras; //Recibe las extras ingresadas en texto plano
@@ -26,7 +26,7 @@ public class Vehiculo {
 
     //Constructor 
     public Vehiculo(int ano, String marca, String modelo, String numPlaca,
-            String color, int NumPasajeros, String combustible, Estado estado,
+            String color, int NumPasajeros, String combustible, EstadoVehiculo estado,
             double precioDia, int cilindrada, String cadenaExtras) {
         this.ano = ano;
         this.marca = marca;
@@ -126,11 +126,11 @@ public class Vehiculo {
         this.extras = extras;
     }
     
-    public Estado getEstado() {
+    public EstadoVehiculo getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(EstadoVehiculo estado) {
         this.estado = estado;
     }
     
