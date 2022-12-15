@@ -14,18 +14,20 @@ public class Cliente {
     private String correo;
     private Categoria categoria;
 
-    
     public Cliente() {
+        try {
+            this.cedula = JOptionPane.showInputDialog("Digite la cedula");
 
-        this.cedula = JOptionPane.showInputDialog("Digite la cedula");
+            this.nomCompleto = JOptionPane.showInputDialog("Digite el nombre"
+                    + " completo: ");
+            this.fechaNac = JOptionPane.showInputDialog("Digite la"
+                    + "fecha de nacimiento: ");
+            this.correo = JOptionPane.showInputDialog("Digite su correo: ");
 
-        this.nomCompleto = JOptionPane.showInputDialog("Digite el nombre"
-                + " completo: ");
-        this.fechaNac = JOptionPane.showInputDialog("Digite la"
-                + "fecha de nacimiento: ");
-        this.correo = JOptionPane.showInputDialog("Digite su correo: ");
-
-        this.categoria = definirCategoria();
+            this.categoria = definirCategoria();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los datos");
+        }
 
     }
 
@@ -81,7 +83,7 @@ public class Cliente {
     }
 
     public Categoria definirCategoria() {
-        int opcion = Integer.parseInt(JOptionPane.showInputDialog(null, 
+        int opcion = Integer.parseInt(JOptionPane.showInputDialog(null,
                 "Indique una opción:\n1. Zafiro.\n2.Oro.\n3. Plata.\n4. Bronce"));
         switch (opcion) {
             case 1:

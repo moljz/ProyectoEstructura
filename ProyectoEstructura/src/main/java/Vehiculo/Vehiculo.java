@@ -24,61 +24,36 @@ public class Vehiculo {
     //Este atributo define si ha sido o no alquilado el vehículo
     private boolean alquilado = false;
 
-    //Constructor 
-    public Vehiculo(int ano, String marca, String modelo, String numPlaca,
-            String color, int NumPasajeros, String combustible, EstadoVehiculo estado,
-            double precioDia, int cilindrada, String cadenaExtras, boolean alquilado) {
-        this.numPlaca = JOptionPane.showInputDialog("Digite el número de placa:"
-                + " ");
-        this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
-                + "año del vehículo: "));
-        this.marca = JOptionPane.showInputDialog("Digite la marca del "
-                + "vehículo: ");
-        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
-                + " vehículo: ");
-        this.color = JOptionPane.showInputDialog("Digite el color del vehículo:"
-                + " ");
-        this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
-                + " la cantidad de pasajeros del vehículo"));
-        this.combustible = JOptionPane.showInputDialog("Digite el tipo de"
-                + " combustible: ");
-        this.estado = definirEstado();
-        this.precioDia = Double.parseDouble(JOptionPane.showInputDialog("Digite"
-                + " el año del vehículo: "));
-        this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
-                + " la cilindrada del vehículo"));
-        this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
-                + "las extras del vehículo, estas deben estar separadas por "
-                + "una coma (,)"));
-        this.alquilado = alquilado;
-    }
-
     //Constructor default 
     public Vehiculo() {
+        try {
+            this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
+                    + "año del vehículo: "));
+            this.marca = JOptionPane.showInputDialog("Digite la marca del "
+                    + "vehículo: ");
+            this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
+                    + " vehículo: ");
+            this.numPlaca = JOptionPane.showInputDialog("Digite el número de placa:"
+                    + " ");
+            this.color = JOptionPane.showInputDialog("Digite el color del vehículo:"
+                    + " ");
+            this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                    + " la cantidad de pasajeros del vehículo"));
+            this.combustible = JOptionPane.showInputDialog("Digite el tipo de"
+                    + " combustible: ");
+            this.estado = definirEstado();
+            this.precioDia = Double.parseDouble(JOptionPane.showInputDialog("Digite"
+                    + " el precio por día del vehículo: "));
+            this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
+                    + " la cilindrada del vehículo"));
+            this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
+                    + "las extras del vehículo, estas deben estar separadas por "
+                    + "una coma (,)"));
+            this.alquilado = alquilado;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los datos");
+        }
 
-        this.ano = Integer.parseInt(JOptionPane.showInputDialog("Digite el "
-                + "año del vehículo: "));
-        this.marca = JOptionPane.showInputDialog("Digite la marca del "
-                + "vehículo: ");
-        this.modelo = JOptionPane.showInputDialog("Digite el modelo del"
-                + " vehículo: ");
-        this.numPlaca = JOptionPane.showInputDialog("Digite el número de placa:"
-                + " ");
-        this.color = JOptionPane.showInputDialog("Digite el color del vehículo:"
-                + " ");
-        this.NumPasajeros = Integer.parseInt(JOptionPane.showInputDialog("Digite"
-                + " la cantidad de pasajeros del vehículo"));
-        this.combustible = JOptionPane.showInputDialog("Digite el tipo de"
-                + " combustible: ");
-        this.estado = definirEstado();
-        this.precioDia = Double.parseDouble(JOptionPane.showInputDialog("Digite"
-                + " el precio por día del vehículo: "));
-        this.cilindrada = Integer.parseInt(JOptionPane.showInputDialog("Digite"
-                + " la cilindrada del vehículo"));
-        this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
-                + "las extras del vehículo, estas deben estar separadas por "
-                + "una coma (,)"));
-        this.alquilado = alquilado;
     }
 
     //Get and Sets 

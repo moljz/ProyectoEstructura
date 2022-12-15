@@ -28,30 +28,35 @@ public class Solicitud {
     private double montoTotal;
 
     public Solicitud(ListaCliente lista) {
-        this.fecha = JOptionPane.showInputDialog("Ingrese la fecha de la "
-                + "solicitud");
-        this.cantDias = Integer.parseInt(JOptionPane.showInputDialog("Ingrese"
-                + " la cantidad de días de su solicitud"));
-        this.minPasajeros = Integer.parseInt(JOptionPane
-                .showInputDialog("Indique la cantidad de pasajeros mímina del"
-                        + " vehículo"));
-        this.marca = JOptionPane.showInputDialog("Ingrese la marca del vehículo");
-        this.modelo = JOptionPane.showInputDialog("Ingrese el modelo del"
-                + " dispositivo");
-        this.ano = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año"
-                + " del vehículo"));
-        this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
-                + "las extras del vehículo, estas deben estar separadas por "
-                + "una coma (,)"));
-        this.estado = EstadoSolicitud.Registrada;
-        this.cliente = lista.traerPersonaCedula(JOptionPane
-                .showInputDialog("Ingrese la cedula de la persona a la que se"
-                        + " le registra la solicitud."));
-        ajustarCategoriaDias();
+        try {
+            this.fecha = JOptionPane.showInputDialog("Ingrese la fecha de la "
+                    + "solicitud");
+            this.cantDias = Integer.parseInt(JOptionPane.showInputDialog("Ingrese"
+                    + " la cantidad de días de su solicitud"));
+            this.minPasajeros = Integer.parseInt(JOptionPane
+                    .showInputDialog("Indique la cantidad de pasajeros mímina del"
+                            + " vehículo"));
+            this.marca = JOptionPane.showInputDialog("Ingrese la marca del vehículo");
+            this.modelo = JOptionPane.showInputDialog("Ingrese el modelo del"
+                    + " dispositivo");
+            this.ano = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el año"
+                    + " del vehículo"));
+            this.extras = encolarExtras(JOptionPane.showInputDialog("Ingrese "
+                    + "las extras del vehículo, estas deben estar separadas por "
+                    + "una coma (,)"));
+            this.estado = EstadoSolicitud.Registrada;
+            this.cliente = lista.traerPersonaCedula(JOptionPane
+                    .showInputDialog("Ingrese la cedula de la persona a la que se"
+                            + " le registra la solicitud."));
+            ajustarCategoriaDias();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los datos");
+        }
+
     }
 
     public Solicitud(String fecha, int cantDias, int minPasajeros, String marca,
-            String modelo, int ano, Cola extras, EstadoSolicitud estado, 
+            String modelo, int ano, Cola extras, EstadoSolicitud estado,
             Cliente cliente) {
         this.fecha = fecha;
         this.cantDias = cantDias;
@@ -137,7 +142,7 @@ public class Solicitud {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    
+
     public String getPlacaVehiculo() {
         return placaVehiculo;
     }
@@ -145,7 +150,7 @@ public class Solicitud {
     public void setPlacaVehiculo(String placaVehiculo) {
         this.placaVehiculo = placaVehiculo;
     }
-    
+
     public double getMontoTotal() {
         return montoTotal;
     }
@@ -153,64 +158,66 @@ public class Solicitud {
     public void setMontoTotal(double montoTotal) {
         this.montoTotal = montoTotal;
     }
-    
+
     //Este método se encarga de revisar la cantidad de días que se solicita de 
     //alquiler, de acuerdo a esto verifica si se cambia la categoría del cliente
     //o no
-    public void ajustarCategoriaDias(){
+    public void ajustarCategoriaDias() {
         if (this.getCantDias() >= 30) {
-            if (this.getCliente().getCategoria() != null) switch 
-                    (this.getCliente().getCategoria()) {
-                case Bronce -> {
-                    this.getCliente().setCategoria(Categoria.Plata);
-                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
-                            + " " + this.getCliente().getCategoria());
-                }
-                case Plata -> {
-                    this.getCliente().setCategoria(Categoria.Oro);
-                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
-                            + " " + this.getCliente().getCategoria());
-                }
-                case Oro -> {
-                    this.getCliente().setCategoria(Categoria.Zafiro);
-                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
-                            + " " + this.getCliente().getCategoria());
-                }
-                default -> {
-                    JOptionPane.showMessageDialog(null, "Este cliente ya tiene"
-                            + " la categoría máxima");
-                }
-            }
-        } 
-    }
-    
-    public void ajustarCategoriaMonto(){
-        if (this.getMontoTotal()>= 70000) {
-            if (this.getCliente().getCategoria() != null) switch 
-                    (this.getCliente().getCategoria()) {
-                case Bronce -> {
-                    this.getCliente().setCategoria(Categoria.Plata);
-                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
-                            + " " + this.getCliente().getCategoria());
-                }
-                case Plata -> {
-                    this.getCliente().setCategoria(Categoria.Oro);
-                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
-                            + " " + this.getCliente().getCategoria());
-                }
-                case Oro -> {
-                    this.getCliente().setCategoria(Categoria.Zafiro);
-                    JOptionPane.showMessageDialog(null, "La nueva categoría es:"
-                            + " " + this.getCliente().getCategoria());
-                }
-                default -> {
-                    JOptionPane.showMessageDialog(null, "Este cliente ya tiene"
-                            + " la categoría máxima");
+            if (this.getCliente().getCategoria() != null) {
+                switch (this.getCliente().getCategoria()) {
+                    case Bronce -> {
+                        this.getCliente().setCategoria(Categoria.Plata);
+                        JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                                + " " + this.getCliente().getCategoria());
+                    }
+                    case Plata -> {
+                        this.getCliente().setCategoria(Categoria.Oro);
+                        JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                                + " " + this.getCliente().getCategoria());
+                    }
+                    case Oro -> {
+                        this.getCliente().setCategoria(Categoria.Zafiro);
+                        JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                                + " " + this.getCliente().getCategoria());
+                    }
+                    default -> {
+                        JOptionPane.showMessageDialog(null, "Este cliente ya tiene"
+                                + " la categoría máxima");
+                    }
                 }
             }
-        } 
+        }
     }
-    
+
+    public void ajustarCategoriaMonto() {
+        if (this.getMontoTotal() >= 70000) {
+            if (this.getCliente().getCategoria() != null) {
+                switch (this.getCliente().getCategoria()) {
+                    case Bronce -> {
+                        this.getCliente().setCategoria(Categoria.Plata);
+                        JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                                + " " + this.getCliente().getCategoria());
+                    }
+                    case Plata -> {
+                        this.getCliente().setCategoria(Categoria.Oro);
+                        JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                                + " " + this.getCliente().getCategoria());
+                    }
+                    case Oro -> {
+                        this.getCliente().setCategoria(Categoria.Zafiro);
+                        JOptionPane.showMessageDialog(null, "La nueva categoría es:"
+                                + " " + this.getCliente().getCategoria());
+                    }
+                    default -> {
+                        JOptionPane.showMessageDialog(null, "Este cliente ya tiene"
+                                + " la categoría máxima");
+                    }
+                }
+            }
+        }
+    }
+
     //Este método convierte una cadena de texto separada por coma en una cola
     public Cola encolarExtras(String extras) {
         //Genera la cola a retornar
@@ -229,4 +236,3 @@ public class Solicitud {
     }
 
 }
-
