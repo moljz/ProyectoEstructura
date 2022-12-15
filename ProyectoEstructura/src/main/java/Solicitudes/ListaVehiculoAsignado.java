@@ -6,20 +6,13 @@ import Vehiculo.*;
  *
  * @author Maria Gabriela
  */
-//Molina: Consultar al profe si las estructuras están limitadas a las que indica 
-//el enunciado o si se puede usar cualquiera de las vistas en el curso ya que 
-//de ser limitado es necesario actualizar esta lista a circular
-//Gabriela:Como hablamos,el profe me puso en el msj que las vistas en clase 
-//entonces todo gucci :) 
+
 public class ListaVehiculoAsignado {
 
     //Atributos 
     private NodoVehiculo cabeza;
 
-    //Molina: La lista inserta los elementos en el orden deseado; sin embargo,
-    //duplica el primer elemento que se ingresa en la lista por lo que es necesario 
-    //solventarlo para darlo por corregido
-    //Gabriela: Creo que ya habíamos solucionado esto de la lista verdad ?
+
     public void inserta(Vehiculo v) {
         if (cabeza == null) { //Si la lista está vacía solo asignamos nuevo nodo 
             cabeza = new NodoVehiculo(v);
@@ -39,7 +32,8 @@ public class ListaVehiculoAsignado {
             //Este método lo usamos para insertar al medio y al final
             //de la lista 
             NodoVehiculo aux = cabeza;
-            while (aux.getNext() != null && aux.getNext().getDato().getAno() < v.getAno()) {
+            while (aux.getNext() != null && aux.getNext().getDato().getAno() 
+                    < v.getAno()) {
                 aux = aux.getNext();
             }
             //ya ubicado se procede a realizar los enlaces (medio) 
@@ -50,8 +44,6 @@ public class ListaVehiculoAsignado {
 
     }
 
-    //Molina: Funcional
-    //Consulta vehículo por numero de placa 
     public boolean existe(String NumPlaca) {
         boolean esta = false; //Busca en la lista y retorna true si un
         //Vehiculo tiene ese número de placa 
@@ -61,10 +53,10 @@ public class ListaVehiculoAsignado {
             //Utilizo aux como indice 
             //Mientras no se acabe la lista y el elemento de la lista sea 
             //diferente del buscado
-            while (aux != null && aux.getDato().getNumPlaca() != NumPlaca) {
+            while (aux != null && !aux.getDato().getNumPlaca().equals(NumPlaca)) {
                 aux = aux.getNext(); //avanzo en la lista 
             }
-            esta = (aux != null && aux.getDato().getNumPlaca() == NumPlaca);
+            esta = (aux != null && aux.getDato().getNumPlaca().equals(NumPlaca));
         }
         return esta;
     }
@@ -82,10 +74,12 @@ public class ListaVehiculoAsignado {
             //diferente del buscado
             //Molina: Se cambia el operador de "==" a "!=" ya que si son 
             //iguales el método no ejecuta cambios
-            while (aux != null && aux.getDato().getNumPlaca() != v.getNumPlaca()) {
+            while (aux != null && !aux.getDato().getNumPlaca()
+                    .equals(v.getNumPlaca())) {
                 aux = aux.getNext(); //avanzo en la lista 
             }//Si lo encuentra hago el cambio de datos
-            if (aux != null && aux.getDato().getNumPlaca() == v.getNumPlaca()) {
+            if (aux != null && aux.getDato().getNumPlaca()
+                    .equals(v.getNumPlaca())) {
                 //Cambia la marca 
                 aux.getDato().setMarca(v.getMarca());
                 aux.getDato().setAno(v.getAno());
@@ -108,17 +102,19 @@ public class ListaVehiculoAsignado {
     public void elimina(String NumPlaca) {
         //Buscamos el vehículo por num plac, si lo encuentra lo elimina
         if (cabeza != null) {//Si hay algo en la lista buscamos 
-            if (cabeza.getDato().getNumPlaca() == NumPlaca) {
+            if (cabeza.getDato().getNumPlaca().equals(NumPlaca)) {
                 cabeza = cabeza.getNext();
             } else {
                 NodoVehiculo aux = cabeza;//Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
-                while (aux.getNext() != null && aux.getNext().getDato().getNumPlaca() != NumPlaca) {
+                while (aux.getNext() != null && !aux.getNext().getDato()
+                        .getNumPlaca().equals(NumPlaca)) {
                     aux = aux.getNext();
                 }//Avanzo en la lista
                 //Si es el de adelante lo borro
-                if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca() == NumPlaca) {
+                if (aux.getNext() != null && aux.getNext().getDato()
+                        .getNumPlaca().equals(NumPlaca)) {
                     aux.setNext(aux.getNext().getNext());//Cambio las referencias 
                 }
             }
@@ -130,19 +126,20 @@ public class ListaVehiculoAsignado {
         Vehiculo v = null;
         //si una persona tiene el id, lo extrae (eliminando y retornando)
         if (cabeza != null) { //Si hay algo en la lista buscaré
-            if (cabeza.getDato().getNumPlaca()== NumPlaca) {
+            if (cabeza.getDato().getNumPlaca().equals(NumPlaca)) {
                 cabeza = cabeza.getNext();
             } else {
                 NodoVehiculo aux = cabeza; //utilizo aux como indice
                 //Mientras no se acabe la lista y el elemento
                 //de la lista sea menor que el buscado
-                while (aux.getNext() != null && aux.getNext().getDato().getNumPlaca()
-                        != NumPlaca) {
+                while (aux.getNext() != null && !aux.getNext().getDato()
+                        .getNumPlaca().equals(NumPlaca)) {
                     aux = aux.getNext();
                     //avanzo en la lista
                 }
                 // Si es el de adelante... quardo la persona y lo borro
-                if (aux.getNext() != null && aux.getNext().getDato().getNumPlaca()== NumPlaca) {
+                if (aux.getNext() != null && aux.getNext().getDato()
+                        .getNumPlaca().equals(NumPlaca)) {
                     v = aux.getNext().getDato();
                     aux.setNext(aux.getNext().getNext());//cambio las referencias
                 }

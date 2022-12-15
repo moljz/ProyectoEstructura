@@ -4,7 +4,6 @@ import Cliente.Categoria;
 import Cliente.Cliente;
 import Cliente.ListaCliente;
 import Extras.Cola;
-import Vehiculo.Vehiculo;
 import javax.swing.JOptionPane;
 
 /**

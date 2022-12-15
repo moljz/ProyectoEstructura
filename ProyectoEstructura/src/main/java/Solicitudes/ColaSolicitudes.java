@@ -1,9 +1,7 @@
 package Solicitudes;
 
-import Cliente.Categoria;
 import Vehiculo.EstadoVehiculo;
 import Vehiculo.ListaVehiculo;
-import Vehiculo.NodoVehiculo;
 import Vehiculo.Vehiculo;
 import javax.swing.JOptionPane;
 
@@ -36,17 +34,6 @@ public class ColaSolicitudes {
         largo++;
     }
 
-    /*Recibe 2 listas, una cola y una pila con la finalidad de poder hacer el
-    movimiento de datos, este método toma los vehículos y los asigna a las 
-    solicitudes, moviendo las solicitudes y los vehículos a una estructura de 
-    datos nueva que los va a almacenar una vez tratados*/
-    //Segundo hay que validar si los parametros de la solicitud cumplen con un vehiculo y priorizar este
-    //Se pasa la placa a la solicitud, se cambia el estado del vehículo a asignado
-    //Se cambia la solicitud a estado procesada
-    //Se debe calcular el monto del alquiler  con el monto diario por la cantidad de días por el 13%
-    //El monto tiene que quedar en la solicitud
-    //Si el monto es mayor a 70 reds sube la categoría
-    //Si no hay vehículos queda como rechazada
     public void atiende(ListaVehiculo listaGlobal, ListaVehiculo 
             listaVehiculoAsignado, ColaSolicitudes colaAtendida, PilaSolicitud 
                     pilaAtendida) {
@@ -80,47 +67,66 @@ public class ColaSolicitudes {
                 //Inserta en la lista de vehiculos alquilados el vehiculo
                 listaVehiculoAsignado.inserta(extraido);
                 //Saco de la global el primer nodo
-                listaGlobal.extrae(listaGlobal.getCabeza().getDato().getNumPlaca());
+                listaGlobal.extrae(listaGlobal.getCabeza().getDato()
+                        .getNumPlaca());
                 //Hago el calculo del monto total para colocarlo
-                aux.getDato().setMontoTotal(Math.round((extraido.getPrecioDia() * aux.getDato().getCantDias()) * 1.13));
+                aux.getDato().setMontoTotal(Math.round((extraido.getPrecioDia() 
+                        * aux.getDato().getCantDias()) * 1.13));
+                //Valida si hay que cambiar la categoría de acuerdo al monto de
+                //la solicitud
                 aux.getDato().ajustarCategoriaMonto();
                 //Se usa el auxiliar para poder acceder posteriormente al frente
                 if (aux != null) {
-                    //Esta línea pasa el nodo de frente al siguiente en la cola
+                    //Define la placa del vehículo que se asigna en la solicitud
                     aux.getDato().setPlacaVehiculo(extraido.getNumPlaca());
+                    //Cambia el estado de la solicitud a procesada
                     aux.getDato().setEstado(EstadoSolicitud.Procesada);
+                    //Extrae de esta cola el nodo
                     frente = frente.getAtras();
-                    //Quita la relación con el nodo de atrás ya que define al de atrás 
-                    //como nulo
+                    //Quita la relación con el nodo de atrás ya que define al 
+                    //de atrás como nulo
                     aux.setAtras(null);
-
                 } else {
+                    //Notifica al usuario
                     JOptionPane.showMessageDialog(null, "No quedan solicitudes "
                             + "pendientes");
                 }
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "No hay solicitudes en estado 'Registrado'");
+            //Indica al usuario que no hay solicitudes nuevas
+            JOptionPane.showMessageDialog(null, "No hay solicitudes en estado"
+                    + " 'Registrado'");
         }
         largo--;
     }
 
+    //Registra las devoluciones de vehiculos
     public void devolucion(String Cedula, String Placa, String Estado, 
             ColaSolicitudes colaAtendidos, ListaVehiculo listaVehiculoAtendida){
+        //Mientras tenga algo en la cola
         if (frente != null) {
+            //Asigno auxiliar al primero
             NodoSolicitud aux = frente;
+            //Mientras no encuentre la placa y cedula
             while (!aux.getDato().getCliente().getCedula().equals(Cedula) && 
-                    !aux.getDato().getPlacaVehiculo().equals(Placa)) {                
+                    !aux.getDato().getPlacaVehiculo().equals(Placa)) {   
+                //Mientras siga avanzando en la lista
                 if (aux.getAtras() == null) {
+                    //Si no hay más se indica al usuario
                     JOptionPane.showMessageDialog(null, "No hay solicitudes "
                             + "para esta cedula y placa");
                 } else {
+                    //Si las hay sigo recorriendo
                     aux = aux.getAtras();
                 }
             }
+//            Vehiculo extraido = listaVehiculoAtendida.extrae(Placa);
+//            listaVehiculoAtendida.inserta(extraido);
+            //Cambia el estado de la solicitud
             aux.getDato().setEstado(EstadoSolicitud.Finalizada);
         } else {
+            //Indica que no hay más solicitudes
             JOptionPane.showMessageDialog(null, "No hay solicitudes en proceso");
         }
         

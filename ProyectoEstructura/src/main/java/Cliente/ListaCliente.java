@@ -137,11 +137,13 @@ public class ListaCliente {
                 NodoCliente aux = cabeza;//Utilizo aux como indice 
                 //Mientras no se acabe la lista y el elemento de la lista sea 
                 //diferente del buscado
-                while (aux.getNext() != null && !aux.getNext().getDato().getCedula().equals(cedula)) {
+                while (aux.getNext() != null && !aux.getNext().getDato()
+                        .getCedula().equals(cedula)) {
                     aux = aux.getNext();
                 }//Avanzo en la lista
                 //Si es el de adelante lo borro
-                if (aux.getNext() != null && aux.getNext().getDato().getCedula().equals(cedula)) {
+                if (aux.getNext() != null && aux.getNext().getDato()
+                        .getCedula().equals(cedula)) {
                     aux.setNext(aux.getNext().getNext());//Cambio las referencias 
                 }
                 JOptionPane.showMessageDialog(null, "Usuario eliminado con exito");

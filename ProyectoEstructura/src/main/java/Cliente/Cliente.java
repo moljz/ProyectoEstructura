@@ -1,8 +1,6 @@
 package Cliente;
 
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -102,19 +100,6 @@ public class Cliente {
                 JOptionPane.showMessageDialog(null, "Inserte una opción valida");
         }
         return this.categoria;
-    }
-
-    public void pedir_dato() {
-
-        this.cedula = JOptionPane.showInputDialog("Digite la cedula");
-
-        this.nomCompleto = JOptionPane.showInputDialog("Digite el nombre"
-                + " completo: ");
-        this.fechaNac = JOptionPane.showInputDialog("Digite la"
-                + "fecha de nacimiento: ");
-        this.correo = JOptionPane.showInputDialog("Digite su correo: ");
-
-        this.categoria = Categoria.valueOf(JOptionPane.showInputDialog("Digite su categoría de cliente"));
     }
 
 }

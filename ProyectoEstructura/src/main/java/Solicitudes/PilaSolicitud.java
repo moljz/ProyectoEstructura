@@ -28,12 +28,12 @@ public class PilaSolicitud {
 
     public void push(Solicitud solicitud) {
         NodoSolicitud newNode = new NodoSolicitud(solicitud); //Crea un nodo vacío
-        //newNode.setValor(valor); //Asigna el valor del nodo con el valor que se le da por parámetro
-
+       
         if (this.vacia()) { //Valida si la pila está vacia
             this.cima = newNode; //Asigna el nodo como cima porque no hay otro
         } else {
-            newNode.setAtras(this.cima); //Referencia el nodo que está debajo asignando la antigua cima
+            newNode.setAtras(this.cima); //Referencia el nodo que está debajo 
+            //asignando la antigua cima
             this.cima = newNode; //Asigna el nuevo nodo como una nueva cima
         }
         this.largo++; //Incrementa el tamaño de la pila
